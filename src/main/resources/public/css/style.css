@@ -57,6 +57,15 @@ body {
      margin: auto;
 }
 
+#container-background {
+     background-color: rgba(0,0,0,.89);
+     position: fixed;
+     left:5%;
+     right:5%;
+     width: 90%;
+     z-index: -1;
+}
+
 @font-face {
     font-family: nova;
     src: url(../fonts/NOVABOLD.otf);
@@ -88,15 +97,21 @@ body {
 }
 
 .serve {
-     color:#575250;
+     color:white;
      font-size: 50px;
-     font-family: nova;
+     font-family: code;
+}
+
+#logo {
+     position: fixed;
+     height: 80px;
+     top: 10;
+     left: 0;
+
 }
 
 h1 {
      text-align: center;
-  
-     
 }
 
 /******************************************
@@ -107,6 +122,7 @@ header {
   width: 100%;
   /*position: fixed;*/
   margin: auto;
+  background-color: black;
 }
 h2 {
      text-align: center;
@@ -116,19 +132,33 @@ h2 {
 form {
     margin: auto;
     width: 50%;
+    text-align: center;
+}
+
+.form-group {
+     text-align: center;
+     color: white;
+     margin:auto;
 }
 
 label {
      text-align: center
+     color:white;
 }
 
-input {
-     width: 100px;
+input#userName.form-control, input#password.form-control {
+     /*width: 100px;*/
 }
+
 
 .login, .signup {
      display: block;
      margin: auto;
+     background-color: inherit!important;
+     border: none;
+     text-align: center;
+     font-family: nova;
+     color: white;
 }
 
 nav {
@@ -136,43 +166,64 @@ nav {
   width: 100%;
 }
 
+.left {
+     float: left;
+}
+
+.glyphicon-user {
+     color: white;
+}
+
+.right {
+     float: right;
+}
+
 nav ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 230%;
-  width: inherit;
+     list-style-type: none;
+     padding: 0;
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: row;
+     justify-content: space-between;
+     font-size: 100%;
+     width: 33.333%;
+     
 }
 
 nav ul li {
-  text-align: center;
-  width: 20%;
-
+     text-align: center;
+     color: white;
+     margin-right: auto;
+     display: inline-block;
+     flex-grow: 1;
 }
 
-nav ul li:hover {
-  
+nav ul li a {
+     color: white;
+     text-decoration: none;
 }
 
-li:hover {
-  text-decoration: line-through;
-  cursor: pointer;
+nav ul li a:hover {
+     color:#3b55a3;
+}
+
+li a:hover {
+     cursor: pointer;
 }
 
 /******************************************
 /* IMAGE SLIDER                   
 /*******************************************/
 
-.images {
-     margin: auto;
+.row {
+     margin-top:2%;
 }
 
-.bxslider {
+#carousel-example-generic {
      display: block;
      margin: auto;
+     width: 50%;
+     height: 400px;
 }
 
 
