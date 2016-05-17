@@ -29,7 +29,15 @@ public class App {
       get("/directory", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("students", Student.all());
-        model.put("template", "templates/home.vtl");
+        model.put("template", "templates/directory.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
+
+      get("/student/:id/profile", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        int student_id = Integer.parseInt(queryParams("student_id"));
+        model.put("students", Student.find(student_id));
+        model.put("template", "templates/profile.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
   }
