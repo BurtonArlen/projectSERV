@@ -22,7 +22,6 @@ public class StudentTest {
     Student myStudent = new Student("dave");
     Timestamp testCreatedAt = new Timestamp(new Date().getTime());
     assertEquals(myStudent.getCreatedAt().getHours(), testCreatedAt.getHours());
-    assertEquals(myStudent.getUpdatedAt().getHours(), testCreatedAt.getHours());
   }
 
   @Test
@@ -36,14 +35,14 @@ public class StudentTest {
   public void save_returnsTrueIfNamesAretheSame_Student() {
     Student testStudent = new Student("dave");
     testStudent.save();
-    assertTrue(Student.all().get(0).equals(testStudent));
+    assertTrue(Student.allStudents().get(0).equals(testStudent));
   }
 
   @Test
   public void find_returnsCorrectStudentSearchedFor_Student() {
     Student testStudent = new Student("dave");
     testStudent.save();
-    assertTrue(Student.find(testStudent.getId()).equals(testStudent));
+    assertTrue(Student.findStudent(testStudent.getId()).equals(testStudent));
   }
 
 }

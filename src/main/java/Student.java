@@ -16,12 +16,10 @@ public class Student {
   private Timestamp created_at;
 
   private int skill_id;
-  private ArrayList<String> skillsArray;
+  private ArrayList<String> skillsArray = new ArrayList<String>();
 
   private int exp_id;
-  private ArrayList<String> experienceArray;
-
-
+  private ArrayList<String> experienceArray = new ArrayList<String>();
 
   public Student(String student_name) {
     this.student_name = student_name;
@@ -30,16 +28,44 @@ public class Student {
 
   //create
   public void save(){
-  try(Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO students (email, password, student_name, bio, created_at) VALUES ( :email, :password, :student_name, :bio, :created_at)";
-    this.id = (int) con.createQuery(sql, true)
-      .addParameter("email", email)
-      .addParameter("password", password)
-      .addParameter("student_name", student_name)
-      .addParameter("bio", bio)
-      .addParameter("created_at", created_at)
-      .executeUpdate()
-      .getKey();
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO students (email, password, student_name, bio, created_at) VALUES ( :email, :password, :student_name, :bio, :created_at)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("email", email)
+        .addParameter("password", password)
+        .addParameter("student_name", student_name)
+        .addParameter("bio", bio)
+        .addParameter("created_at", created_at)
+        .executeUpdate()
+        .getKey();
+      // 
+      // for (String skill : this.skillsArray) {
+      //   String skillAdd = "INSERT INTO skills (skill) VALUES (:skill)";
+      //   this.skillid = (int) con.createQuery(skillAdd , true)
+      //     .addParameter("skill", skill)
+      //     .executeUpdate()
+      //     .getKey();
+      //
+      //   String joinstudent_skillsTableAdd = "INSERT INTO student_skills (student_id, skill_id) VALUES (:student_id, :skill_id)";
+      //   con.createQuery(joinstudent_skillsTableAdd)
+      //     .addParameter("student_id", this.getId())
+      //     .addParameter("skill_id", this.getIngredientsId())
+      //     .executeUpdate();
+      // }
+
+      // for (String exp : this.arrayOfDirect) {
+      //   String expAdd = "INSERT INTO exps (exp) VALUES (:exp)";
+      //   this.expid = (int) con.createQuery(expAdd , true)
+      //     .addParameter("exp", exp)
+      //     .executeUpdate()
+      //     .getKey();
+      //
+      //   String joinrecipe_expsTableAdd = "INSERT INTO recipe_exps (recipe_id, exp_id) VALUES (:recipe_id, :exp_id)";
+      //   con.createQuery(joinrecipe_expsTableAdd)
+      //     .addParameter("recipe_id", this.getId())
+      //     .addParameter("exp_id", this.getDirectionId())
+      //     .executeUpdate();
+      // }
     }
   }
 
