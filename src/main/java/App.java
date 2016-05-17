@@ -14,15 +14,13 @@ public class App {
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
 
-      get("/profile", (request, response) -> {
+      get("/signUp", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("template", "templates/profile.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
   }
 
-  public static Boolean methodName(String userInput) {
-    return true;
-  }
+
 
 }
