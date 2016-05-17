@@ -41,6 +41,11 @@ Developer @GA in NYC
 	padding: 0 10px 10px 0; /* note the padding around a left floated image */
 }
 
+@import "compass/css3";
+
+@import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
+
+
 /******************************************
 /* BASE STYLES                   
 /*******************************************/
@@ -53,8 +58,29 @@ body {
      margin:0px;
 }
 
+#main-content {
+     min-width: 100%; 
+}
+
+.dropdown-effect {
+     background-color: rgba(0,0,0,.89);
+}
+
+svg{
+  width: 600px;
+  height: 120px;
+  display: none;
+  position: relative;
+  
+  left: 45%;
+  overflow: hidden; 
+  margin: 0 auto;
+  
+}
+
 .container {
      margin: auto;
+     
 }
 
 .row {
@@ -62,12 +88,7 @@ body {
 }
 
 #container-background {
-     margin-top:2%;
-    /* left:5%;
-     right:5%;
-     bottom: 1%; 
-     width: 90%;*/
-     
+     margin-top:2%;     
 }
 
 @font-face {
@@ -87,7 +108,14 @@ body {
     font-family: codelight;
     src: url(../fonts/codeLight.otf);
 }
-
+@font-face {
+    font-family: hacked;
+    src: url(../fonts/HACKED.ttf);
+}
+@font-face {
+    font-family: aliens;
+    src: url(../fonts/aliensandcows.ttf);
+}
 .epi {
      color:#3b55a3;
      font-family: code;
@@ -108,6 +136,7 @@ body {
 
 #logo {
      position: fixed;
+     display: none;
      height: 80px;
      top: 10;
      left: 0;
@@ -116,25 +145,31 @@ body {
 h1 {
      text-align: center;
 }
-
 /******************************************
-/* NAV                   
+ // DROPDOWN          
 /*******************************************/
 
-header {
-  width: 100%;
-  /*position: fixed;*/
-  margin: auto;
-  background-color: black;
+.dropdown {
+     position: relative;
 }
-h2 {
-     text-align: center;
-     font-family: codelight;
+
+.dropdown-content {
+     display: none;
+     position: absolute;
+     right: -100px;
+     top: 50px;
+     margin: auto;
+     min-width: 200px;
+     background-color: black;
+     z-index: 1;
+     
 }
 
 form {
     margin: auto;
-    width: 50%;
+    
+    padding:10px!important;
+    display: block;
     text-align: center;
 }
 
@@ -149,12 +184,7 @@ label {
      color:white;
 }
 
-input#userName.form-control, input#password.form-control {
-     /*width: 100px;*/
-}
-
-
-.login, .signup {
+.login {
      display: block;
      margin: auto;
      background-color: inherit!important;
@@ -162,6 +192,20 @@ input#userName.form-control, input#password.form-control {
      text-align: center;
      font-family: nova;
      color: white;
+}
+
+/******************************************
+/* NAV                   
+/*******************************************/
+
+header {
+  width: 100%;
+  margin: auto;
+  background-color: black;
+}
+h2 {
+     text-align: center;
+     font-family: codelight;
 }
 
 nav {
@@ -175,6 +219,7 @@ nav {
 
 .glyphicon {
      color: white;
+     font-size: 20px;
 }
 
 .right {
@@ -204,14 +249,23 @@ nav ul li {
 nav ul li a {
      color: white;
      text-decoration: none;
+     font-family: aliens;
+     font-size: 150%;
+
 }
 
 nav ul li a:hover {
+     text-decoration: none;
      color:#3b55a3;
 }
 
 li a:hover {
      cursor: pointer;
+}
+
+li:hover {
+     cursor: pointer;
+     color:#3b55a3;
 }
 
 /******************************************
@@ -249,13 +303,17 @@ li a:hover {
 
   }
 
+  p {
+     font-family: aliens;
+     font-size: 200%;
+  }
+
 section {
      width: 50%;
      height:50px;
      float: center;
      margin:auto;
      display: block;
-     /*background-color: black;*/
      color: white;
      font-family: nova;
 }
@@ -265,13 +323,11 @@ section h2 {
 }
 
 .gallery-top {
-   clear: both;
-   background-color: white;
-  position: relative;
-  /*z-index: -2;*/
+     clear: both;
+     background-color: white;
+     position: relative;
+  
 }
-
-
 
 .gallery {
      margin:auto;
@@ -282,8 +338,6 @@ section h2 {
      background-color: black;
      position: relative;
      z-index: -2;
-     
-  
 }
 
 .features {
@@ -294,28 +348,36 @@ section h2 {
 }
 
 .feature-left, .feature-right {
+     position: relative;
   float: left;
   height:300px;
   width: 50%;
 }
 
-.feature-right {
-     background-color: white;
-}
 
-/*.feature-right img {
+
+.feature-right img {
      height: 300px;
      width: 438px;
+     border-left: 1em #cecfca;
      position: relative;
+     bottom:70%;
+     left: 30%;
      z-index: -1;
      
-}*/
+}
 
 .feature-left img {
   height: 300px;
-  width: 687px;
+  width: 550px;
+  opacity: 0.8;
   position: relative;
   z-index: -1;
+}
+
+.feature-right.footer-content p {
+     padding: 0;
+     margin:0;
 }
 
 
@@ -335,8 +397,6 @@ section h2 {
 .feature-content {
      width: 33.333%;
      float: left;
-
-
 }
 
 
