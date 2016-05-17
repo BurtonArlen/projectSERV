@@ -8,7 +8,7 @@ import static spark.Spark.*;
 public class App {
   public static void main(String[] args) {
 
-     setPort(80);
+    //  setPort(80);
 
     staticFileLocation("/public");
       get("/", (request, response) -> {
@@ -29,13 +29,13 @@ public class App {
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
 
-      // get("/directory", (request, response) -> {
-      //   Map<String, Object> model = new HashMap<String, Object>();
-      //   model.put("students", Student.all());
-      //   model.put("template", "templates/directory.vtl");
-      //   return new ModelAndView(model, "templates/layout.vtl");
-      // }, new VelocityTemplateEngine());
-      //
+      get("/directory", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("students", Student.allStudents());
+        model.put("template", "templates/directory.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
+
       // get("/student/:id/profile", (request, response) -> {
       //   Map<String, Object> model = new HashMap<String, Object>();
       //   int student_id = Integer.parseInt(queryParams("student_id"));
