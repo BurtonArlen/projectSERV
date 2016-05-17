@@ -1,0 +1,368 @@
+/* 
+Project Name: Blank Template
+Client: Your Client
+Author: Your Name
+Developer @GA in NYC
+*/
+
+
+/******************************************
+/* SETUP                   
+/*******************************************/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.alignright {
+	float: right; 
+	padding: 0 0 10px 10px; /* note the padding around a right floated image */
+}
+
+.alignleft {
+	float: left; 
+	padding: 0 10px 10px 0; /* note the padding around a left floated image */
+}
+
+/******************************************
+/* BASE STYLES                   
+/*******************************************/
+
+body {
+     color: #000;
+     font-size: 12px;
+     line-height: 1.4;
+     font-family: Helvetica, Arial, sans-serif;
+     margin:0px;
+}
+
+.container {
+     margin: auto;
+}
+
+.row {
+     
+}
+
+#container-background {
+     margin-top:2%;
+    /* left:5%;
+     right:5%;
+     bottom: 1%; 
+     width: 90%;*/
+     
+}
+
+@font-face {
+    font-family: nova;
+    src: url(../fonts/NOVABOLD.otf);
+}
+
+@font-face {
+    font-family: codelight;
+    src: url(../fonts/Neou-Bold.otf);
+}
+@font-face {
+    font-family: code;
+    src: url(../fonts/codeBold.otf);
+}
+@font-face {
+    font-family: codelight;
+    src: url(../fonts/codeLight.otf);
+}
+
+.epi {
+     color:#3b55a3;
+     font-family: code;
+     text-transform: lowercase;
+}
+
+.us {
+     color:#3b55a3;
+     font-family: code;
+     text-transform: lowercase;
+}
+
+.serve {
+     color:white;
+     font-size: 50px;
+     font-family: code;
+}
+
+#logo {
+     position: fixed;
+     height: 80px;
+     top: 10;
+     left: 0;
+}
+
+h1 {
+     text-align: center;
+}
+
+/******************************************
+/* NAV                   
+/*******************************************/
+
+header {
+  width: 100%;
+  /*position: fixed;*/
+  margin: auto;
+  background-color: black;
+}
+h2 {
+     text-align: center;
+     font-family: codelight;
+}
+
+form {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.form-group {
+     text-align: center;
+     color: white;
+     margin:auto;
+}
+
+label {
+     text-align: center
+     color:white;
+}
+
+input#userName.form-control, input#password.form-control {
+     /*width: 100px;*/
+}
+
+
+.login, .signup {
+     display: block;
+     margin: auto;
+     background-color: inherit!important;
+     border: none;
+     text-align: center;
+     font-family: nova;
+     color: white;
+}
+
+nav {
+  margin: auto;
+  width: 100%;
+}
+
+.left {
+     float: left;
+}
+
+.glyphicon {
+     color: white;
+}
+
+.right {
+     float: right;
+}
+
+nav ul {
+     list-style-type: none;
+     padding: 0;
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: row;
+     justify-content: space-between;
+     font-size: 100%;
+     width: 33.333%;
+     
+}
+
+nav ul li {
+     text-align: center;
+     color: white;
+     margin-right: auto;
+     display: inline-block;
+     flex-grow: 1;
+}
+
+nav ul li a {
+     color: white;
+     text-decoration: none;
+}
+
+nav ul li a:hover {
+     color:#3b55a3;
+}
+
+li a:hover {
+     cursor: pointer;
+}
+
+/******************************************
+/* GALLERY TOP
+/*******************************************/
+.social {
+     list-style-type: none;
+     padding: 0;
+     display: flex;
+     flex-wrap: wrap;
+     flex-direction: row;
+     justify-content: space-between;    
+}
+
+.social li {
+     text-align: center;
+     color: white;
+     margin-right: auto;
+     display: inline-block;
+     flex-grow: 1;
+     font-size: 100%;
+}
+
+
+/******************************************
+/* GALLERY
+/*******************************************/
+
+.wrap {
+     max-width: 1280px;
+     margin: 0 auto;
+     position: relative;
+     background-color: #000;
+     z-index: -3;
+
+  }
+
+section {
+     width: 50%;
+     height:50px;
+     float: center;
+     margin:auto;
+     display: block;
+     /*background-color: black;*/
+     color: white;
+     font-family: nova;
+}
+
+section h2 {
+     margin:0;
+}
+
+.gallery-top {
+   clear: both;
+   background-color: white;
+  position: relative;
+  /*z-index: -2;*/
+}
+
+
+
+.gallery {
+     margin:auto;
+     margin-bottom:2%;
+     border-bottom: 1em #cecfca;
+     border-left: 1em #cecfca;
+     border-right: 1em #cecfca;
+     background-color: black;
+     position: relative;
+     z-index: -2;
+     
+  
+}
+
+.features {
+     margin:2%;
+     position: relative;
+     z-index: -2;
+     
+}
+
+.feature-left, .feature-right {
+  float: left;
+  height:300px;
+  width: 50%;
+}
+
+.feature-right {
+     background-color: white;
+}
+
+/*.feature-right img {
+     height: 300px;
+     width: 438px;
+     position: relative;
+     z-index: -1;
+     
+}*/
+
+.feature-left img {
+  height: 300px;
+  width: 687px;
+  position: relative;
+  z-index: -1;
+}
+
+
+
+.feature-left h2 {
+     font-family: nova;
+     margin-bottom: 20px;
+     text-align: center;
+     float: left;
+     color: white;
+     position: relative;
+     bottom: 110px;
+     left: 50px;
+     font-size: 30px;
+}
+
+.feature-content {
+     width: 33.333%;
+     float: left;
+
+
+}
+
+
+.footer {
+  border-top: 1em solid black;
+  height: 200px;
+  background-color: white;
+  margin: auto;
+  position: relative;
+  /*z-index: -1;*/
+}
+
+.footer-content {
+  width: 33.333%;
+  float: left;
+
+}
+
+.footer-content p {
+  display: block;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin: 10%;
+}
+
+

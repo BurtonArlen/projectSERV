@@ -14,6 +14,7 @@ public class App {
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
 
+<<<<<<< HEAD
       get("/detector", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
 
@@ -46,4 +47,19 @@ public class App {
     return true;
   }
 
+=======
+      // get("/detector", (request, response) -> {
+      //   Map<String, Object> model = new HashMap<String, Object>();
+      //
+      //   String userInput = request.queryParams("blank");
+      //   App newApp = new App();
+      //   Boolean results = newApp.methodName(userInput);
+      //   model.put("results", results);
+      //
+      //   model.put("template", "templates/detector.vtl");
+      //   return new ModelAndView(model, "templates/layout.vtl");
+      // }, new VelocityTemplateEngine());
+      //
+  }
+>>>>>>> 4ed6456834bc866638f70442b78949f0aaedfd29
 }
