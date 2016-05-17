@@ -25,6 +25,13 @@ public class App {
         model.put("template", "templates/detector.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
+
+      get("/directory", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("students", Student.all());
+        model.put("template", "templates/home.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
   }
 
   public static Boolean methodName(String userInput) {

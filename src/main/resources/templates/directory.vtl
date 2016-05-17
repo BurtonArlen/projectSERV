@@ -1,0 +1,30 @@
+<div class="banner">
+	<header class="clearfix">
+		<img id="logo" src="/images/eS-logo.png">
+
+
+		<h1><span class="epi">epi</span><span class="serve">SERVE</span><span class="us">us</span></h1>
+    <nav class="clearfix">
+			<ul class="left">
+				<li><span class="glyphicon glyphicon-user"></li>
+				<li><a href="#">Link *1*</a></li>
+			</ul>
+			<ul class="right">
+				<li><a href ="#">Link *2*</a></li>
+				<li><a href="#">Link *3*</a></li>
+				<li><span class="glyphicon glyphicon-pencil"></span></li>
+				<li><a href="#">Link *4*</a></li>
+			</ul>
+		</nav>
+
+	</header><!--END OF HEADER -->
+</div><!--end of banner -->
+
+<div>
+  #foreach ($student in $students)
+  <a href="/student/$student.getId()"><span class="studentListing">$student.getName()</span></a>
+</div>
+
+<div class="footer clear">
+  <div class="footer-content"><a href="/">HOME</div>
+</div>
