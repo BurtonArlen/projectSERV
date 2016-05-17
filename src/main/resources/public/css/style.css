@@ -41,6 +41,11 @@ Developer @GA in NYC
 	padding: 0 10px 10px 0; /* note the padding around a left floated image */
 }
 
+@import "compass/css3";
+
+@import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
+
+
 /******************************************
 /* BASE STYLES                   
 /*******************************************/
@@ -54,10 +59,23 @@ body {
 }
 
 #main-content {
-     min-width: 100%;
-     /*background-color: rgba(0,0,0,.89);*/
-     
+     min-width: 100%; 
+}
 
+.dropdown-effect {
+     background-color: rgba(0,0,0,.89);
+}
+
+svg{
+  width: 600px;
+  height: 120px;
+  display: none;
+  position: relative;
+  
+  left: 45%;
+  overflow: hidden; 
+  margin: 0 auto;
+  
 }
 
 .container {
@@ -90,7 +108,14 @@ body {
     font-family: codelight;
     src: url(../fonts/codeLight.otf);
 }
-
+@font-face {
+    font-family: hacked;
+    src: url(../fonts/HACKED.ttf);
+}
+@font-face {
+    font-family: aliens;
+    src: url(../fonts/aliensandcows.ttf);
+}
 .epi {
      color:#3b55a3;
      font-family: code;
@@ -111,6 +136,7 @@ body {
 
 #logo {
      position: fixed;
+     display: none;
      height: 80px;
      top: 10;
      left: 0;
@@ -136,13 +162,13 @@ h1 {
      min-width: 200px;
      background-color: black;
      z-index: 1;
-     height: 300px;
+     
 }
 
 form {
     margin: auto;
-    margin-top: 30px;
-    padding:5px;
+    
+    padding:10px!important;
     display: block;
     text-align: center;
 }
@@ -158,11 +184,6 @@ label {
      color:white;
 }
 
-input#userName.form-control, input#password.form-control {
-     /*width: 100px;*/
-}
-
-
 .login {
      display: block;
      margin: auto;
@@ -171,10 +192,6 @@ input#userName.form-control, input#password.form-control {
      text-align: center;
      font-family: nova;
      color: white;
-}
-
-.dropdown-effect {
-     
 }
 
 /******************************************
@@ -232,9 +249,13 @@ nav ul li {
 nav ul li a {
      color: white;
      text-decoration: none;
+     font-family: aliens;
+     font-size: 150%;
+
 }
 
 nav ul li a:hover {
+     text-decoration: none;
      color:#3b55a3;
 }
 
@@ -282,6 +303,11 @@ li:hover {
 
   }
 
+  p {
+     font-family: aliens;
+     font-size: 200%;
+  }
+
 section {
      width: 50%;
      height:50px;
@@ -322,28 +348,36 @@ section h2 {
 }
 
 .feature-left, .feature-right {
+     position: relative;
   float: left;
   height:300px;
   width: 50%;
 }
 
-.feature-right {
-     background-color: white;
-}
 
-/*.feature-right img {
+
+.feature-right img {
      height: 300px;
      width: 438px;
+     border-left: 1em #cecfca;
      position: relative;
+     bottom:70%;
+     left: 30%;
      z-index: -1;
      
-}*/
+}
 
 .feature-left img {
   height: 300px;
-  width: 687px;
+  width: 550px;
+  opacity: 0.8;
   position: relative;
   z-index: -1;
+}
+
+.feature-right.footer-content p {
+     padding: 0;
+     margin:0;
 }
 
 
@@ -363,8 +397,6 @@ section h2 {
 .feature-content {
      width: 33.333%;
      float: left;
-
-
 }
 
 
