@@ -42,7 +42,7 @@ public class StudentTest {
   public void find_returnsCorrectStudentSearchedFor_Student() {
     Student testStudent = new Student("dave");
     testStudent.save();
-    assertTrue(Student.findStudent(testStudent.getId()).equals(testStudent));
+    assertTrue(Student.findStudentById(testStudent.getId()).equals(testStudent));
   }
 
   @Test
@@ -75,9 +75,13 @@ public class StudentTest {
     Student myStudent2 = new Student("Dave", "a wonderful kid", "dave@dave.dave", "davey", listOfSkills2, listOfExp2);
     myStudent2.save();
 
+    System.out.println(Student.findStudentsBySkill("HTML").get(0).getStudentName());
     assertEquals(Student.allStudents().get(0).getExps(), myStudent2.getExps());
     assertEquals(Student.allStudents().get(0).getSkills(), myStudent2.getSkills());
     assertEquals(Student.allStudents().get(0).getStudentName(), myStudent2.getStudentName());
+    myStudent.removeSkill(myStudent.getSkillIds().get(0));
+    myStudent.removeExp(myStudent.getExpIds().get(0));
+
   }
 
 }

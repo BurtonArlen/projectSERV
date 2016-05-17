@@ -90,12 +90,31 @@ public class Student {
     }
   }
 
-  public static Student findStudent(int id){
+  public static Student findStudentById(int id){
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM students WHERE id=:id";
       return con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Student.class);
+    }
+  }
+
+  public static Student findStudentByName(String name){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM students WHERE student_name=:name";
+      return con.createQuery(sql)
+        .addParameter("name", name)
+        .executeAndFetchFirst(Student.class);
+    }
+  }
+
+  public static List<Student> findStudentsBySkill(String skill){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT students.* FROM students JOIN students_skills ON (students.id = students_skills.student_id) JOIN skills ON (students_skills.skill_id = skills.id) WHERE skills.skill = :skill";
+      List<Student> students = con.createQuery(sql)
+        .addParameter("skill", skill)
+        .executeAndFetch(Student.class);
+        return students;
     }
   }
 
@@ -105,6 +124,16 @@ public class Student {
       List<String> skills = con.createQuery(joinQuery)
       .addParameter("student_id", this.getId())
       .executeAndFetch(String.class);
+      return skills;
+    }
+  }
+
+  public List<Integer> getExpIds() {
+    try(Connection con = DB.sql2o.open()){
+      String joinQuery = "SELECT work_exp.id FROM students JOIN students_exps ON (students.id = students_exps.student_id) JOIN work_exp ON (students_exps.exp_id = work_exp.id) WHERE students.id = :student_id";
+      List<Integer> skills = con.createQuery(joinQuery)
+      .addParameter("student_id", this.getId())
+      .executeAndFetch(Integer.class);
       return skills;
     }
   }
@@ -119,10 +148,36 @@ public class Student {
     }
   }
 
+  public List<Integer> getSkillIds() {
+    try(Connection con = DB.sql2o.open()){
+      String joinQuery = "SELECT skills.id FROM students JOIN students_skills ON (students.id = students_skills.student_id) JOIN skills ON (students_skills.skill_id = skills.id) WHERE students.id = :student_id";
+      List<Integer> skills = con.createQuery(joinQuery)
+      .addParameter("student_id", this.getId())
+      .executeAndFetch(Integer.class);
+      return skills;
+    }
+  }
+
   //update
 
   //delete
+  public void removeExp(int workexp_id) {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM work_exp WHERE id = :id; DELETE FROM students_exps WHERE exp_id = :id;";
+        con.createQuery(deleteQuery)
+          .addParameter("id", workexp_id)
+          .executeUpdate();
+    }
+  }
 
+  public void removeSkill(int skill_id) {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM skills WHERE id = :id; DELETE FROM students_skills WHERE skill_id = :id;";
+        con.createQuery(deleteQuery)
+          .addParameter("id", skill_id)
+          .executeUpdate();
+    }
+  }
 
   @Override
   public boolean equals(Object otherStudent) {
