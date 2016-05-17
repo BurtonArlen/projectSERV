@@ -2,5 +2,6 @@
 import org.sql2o.*;
 
 public class DB {
-  public static Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/episerve", "team_serv", "root");
+  //TODO CHANGE THIS  when putting it on server to:  "team_serv", "root"
+  public static Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/episerve_test", null, null);
 }
