@@ -9,10 +9,12 @@ import java.util.ArrayList;
 public class Student {
 
   private int id;
-  private String email;
-  private String password;
   private String student_name;
   private String bio;
+
+  private String email;
+  private String password;
+
   private Timestamp created_at;
 
   private int skill_id;
@@ -26,6 +28,17 @@ public class Student {
     created_at = new Timestamp(new Date().getTime());
   }
 
+  public Student(String student_name, String bio, String email, String password, ArrayList<String> skillsArray, ArrayList<String> experienceArray) {
+    this.student_name = student_name;
+    this.bio = bio;
+    this.email = email;
+    this.password = password;
+    this.skillsArray = skillsArray;
+    this.experienceArray = experienceArray;
+    created_at = new Timestamp(new Date().getTime());
+  }
+
+
   //create
   public void save(){
     try(Connection con = DB.sql2o.open()) {
@@ -38,34 +51,34 @@ public class Student {
         .addParameter("created_at", created_at)
         .executeUpdate()
         .getKey();
-      // 
-      // for (String skill : this.skillsArray) {
-      //   String skillAdd = "INSERT INTO skills (skill) VALUES (:skill)";
-      //   this.skillid = (int) con.createQuery(skillAdd , true)
-      //     .addParameter("skill", skill)
-      //     .executeUpdate()
-      //     .getKey();
-      //
-      //   String joinstudent_skillsTableAdd = "INSERT INTO student_skills (student_id, skill_id) VALUES (:student_id, :skill_id)";
-      //   con.createQuery(joinstudent_skillsTableAdd)
-      //     .addParameter("student_id", this.getId())
-      //     .addParameter("skill_id", this.getIngredientsId())
-      //     .executeUpdate();
-      // }
 
-      // for (String exp : this.arrayOfDirect) {
-      //   String expAdd = "INSERT INTO exps (exp) VALUES (:exp)";
-      //   this.expid = (int) con.createQuery(expAdd , true)
-      //     .addParameter("exp", exp)
-      //     .executeUpdate()
-      //     .getKey();
-      //
-      //   String joinrecipe_expsTableAdd = "INSERT INTO recipe_exps (recipe_id, exp_id) VALUES (:recipe_id, :exp_id)";
-      //   con.createQuery(joinrecipe_expsTableAdd)
-      //     .addParameter("recipe_id", this.getId())
-      //     .addParameter("exp_id", this.getDirectionId())
-      //     .executeUpdate();
-      // }
+      for (String skill : this.skillsArray) {
+        String skillAdd = "INSERT INTO skills (skill) VALUES (:skill)";
+        this.skill_id = (int) con.createQuery(skillAdd , true)
+          .addParameter("skill", skill)
+          .executeUpdate()
+          .getKey();
+
+        String joinstudent_skillsTableAdd = "INSERT INTO students_skills (student_id, skill_id) VALUES (:student_id, :skill_id)";
+        con.createQuery(joinstudent_skillsTableAdd)
+          .addParameter("student_id", this.getId())
+          .addParameter("skill_id", this.getSkillId())
+          .executeUpdate();
+      }
+
+      for (String exp : this.experienceArray) {
+        String expAdd = "INSERT INTO work_exp (exp) VALUES (:exp)";
+        this.exp_id = (int) con.createQuery(expAdd , true)
+          .addParameter("exp", exp)
+          .executeUpdate()
+          .getKey();
+
+        String joinstudent_expsTableAdd = "INSERT INTO students_exps (student_id, exp_id) VALUES (:student_id, :exp_id)";
+        con.createQuery(joinstudent_expsTableAdd)
+          .addParameter("student_id", this.getId())
+          .addParameter("exp_id", this.getExpId())
+          .executeUpdate();
+      }
     }
   }
 
@@ -83,6 +96,26 @@ public class Student {
       return con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Student.class);
+    }
+  }
+
+  public List<String> getExps() {
+    try(Connection con = DB.sql2o.open()){
+      String joinQuery = "SELECT work_exp.exp FROM students JOIN students_exps ON (students.id = students_exps.student_id) JOIN work_exp ON (students_exps.exp_id = work_exp.id) WHERE students.id = :student_id";
+      List<String> skills = con.createQuery(joinQuery)
+      .addParameter("student_id", this.getId())
+      .executeAndFetch(String.class);
+      return skills;
+    }
+  }
+
+  public List<String> getSkills() {
+    try(Connection con = DB.sql2o.open()){
+      String joinQuery = "SELECT skills.skill FROM students JOIN students_skills ON (students.id = students_skills.student_id) JOIN skills ON (students_skills.skill_id = skills.id) WHERE students.id = :student_id";
+      List<String> skills = con.createQuery(joinQuery)
+      .addParameter("student_id", this.getId())
+      .executeAndFetch(String.class);
+      return skills;
     }
   }
 
@@ -104,6 +137,14 @@ public class Student {
 
   public int getId(){
     return id;
+  }
+
+  public int getSkillId(){
+    return skill_id;
+  }
+
+  public int getExpId(){
+    return exp_id;
   }
 
   public String getStudentName(){
