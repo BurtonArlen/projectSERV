@@ -28,7 +28,7 @@
 							</form>
 						</div>
 				</div>
-				<li><a href="#">Link</a></li>
+				<li><a href="/">Home</a></li>
 			</ul>
 		</nav>
 
@@ -40,10 +40,10 @@
 	<div>
 	  #foreach ($student in $students)
 	  <a href="/student/$student.getId()/profile"><span class="studentListing">$student.getName()</span></a>
+		#end
 	</div>
 
 	<div class="footer clear">
-	  <div class="footer-content"><a href="/">HOME</div>
+	  <div class="footer-content"><a href="/">HOME</a></div>
 	</div>
-
 </div>
