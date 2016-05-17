@@ -17,6 +17,12 @@ public class App {
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
 
+      get("/signUp", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("template", "templates/home.vtl");
+        return new ModelAndView(model, "templates/signUp.vtl");
+      }, new VelocityTemplateEngine());
+
       get("/detector", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
 
