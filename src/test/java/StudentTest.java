@@ -72,15 +72,33 @@ public class StudentTest {
     listOfExp2.add("work2");
     listOfExp2.add("work3");
     listOfExp2.add("work4");
+    ArrayList<String> listOfSkills3 = new ArrayList<String>();
+    listOfSkills3.add("HTML");
+    listOfSkills3.add("CSS");
+    listOfSkills3.add("JAVA");
+    listOfSkills3.add("JAVASCRIPT");
+    listOfSkills3.add("work5");
+
+    ArrayList<String> listOfExp4 = new ArrayList<String>();
+    listOfExp4.add("work1");
+    listOfExp4.add("work2");
+    listOfExp4.add("work3");
+    listOfExp4.add("work4");
+    listOfExp4.add("work5");
+
     Student myStudent2 = new Student("Dave", "a wonderful kid", "dave@dave.dave", "davey", listOfSkills2, listOfExp2);
     myStudent2.save();
 
-    System.out.println(Student.findStudentsBySkill("HTML").get(0).getStudentName());
+    Student.findStudentsBySkill("HTML").get(0).getStudentName();
+    myStudent.addSkills(listOfSkills3);
+    myStudent.addExps(listOfExp4);
+    myStudent.removeSkill(myStudent.getSkillIds().get(0));
+    myStudent.removeExp(myStudent.getExpIds().get(0));
     assertEquals(Student.allStudents().get(0).getExps(), myStudent2.getExps());
     assertEquals(Student.allStudents().get(0).getSkills(), myStudent2.getSkills());
     assertEquals(Student.allStudents().get(0).getStudentName(), myStudent2.getStudentName());
-    myStudent.removeSkill(myStudent.getSkillIds().get(0));
-    myStudent.removeExp(myStudent.getExpIds().get(0));
+
+
 
   }
 

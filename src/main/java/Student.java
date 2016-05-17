@@ -44,41 +44,89 @@ public class Student {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO students (email, password, student_name, bio, created_at) VALUES ( :email, :password, :student_name, :bio, :created_at)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("email", email)
-        .addParameter("password", password)
-        .addParameter("student_name", student_name)
-        .addParameter("bio", bio)
-        .addParameter("created_at", created_at)
-        .executeUpdate()
-        .getKey();
+      .addParameter("email", email)
+      .addParameter("password", password)
+      .addParameter("student_name", student_name)
+      .addParameter("bio", bio)
+      .addParameter("created_at", created_at)
+      .executeUpdate()
+      .getKey();
 
+      //To skill table
       for (String skill : this.skillsArray) {
         String skillAdd = "INSERT INTO skills (skill) VALUES (:skill)";
         this.skill_id = (int) con.createQuery(skillAdd , true)
-          .addParameter("skill", skill)
-          .executeUpdate()
-          .getKey();
+        .addParameter("skill", skill)
+        .executeUpdate()
+        .getKey();
 
         String joinstudent_skillsTableAdd = "INSERT INTO students_skills (student_id, skill_id) VALUES (:student_id, :skill_id)";
         con.createQuery(joinstudent_skillsTableAdd)
-          .addParameter("student_id", this.getId())
-          .addParameter("skill_id", this.getSkillId())
-          .executeUpdate();
+        .addParameter("student_id", this.getId())
+        .addParameter("skill_id", this.getSkillId())
+        .executeUpdate();
       }
 
+      //To experience table
       for (String exp : this.experienceArray) {
         String expAdd = "INSERT INTO work_exp (exp) VALUES (:exp)";
         this.exp_id = (int) con.createQuery(expAdd , true)
-          .addParameter("exp", exp)
-          .executeUpdate()
-          .getKey();
+        .addParameter("exp", exp)
+        .executeUpdate()
+        .getKey();
 
         String joinstudent_expsTableAdd = "INSERT INTO students_exps (student_id, exp_id) VALUES (:student_id, :exp_id)";
         con.createQuery(joinstudent_expsTableAdd)
-          .addParameter("student_id", this.getId())
-          .addParameter("exp_id", this.getExpId())
-          .executeUpdate();
+        .addParameter("student_id", this.getId())
+        .addParameter("exp_id", this.getExpId())
+        .executeUpdate();
       }
+    }
+  }
+
+  public void addSkills(ArrayList<String> newSkillsArray){
+    try(Connection con = DB.sql2o.open()) {
+
+      for (String newSkill : newSkillsArray) {
+        if (this.getSkills().contains(newSkill)){
+          continue;
+        }
+        String skillAdd = "INSERT INTO skills (skill) VALUES (:skill)";
+        this.skill_id = (int) con.createQuery(skillAdd , true)
+        .addParameter("skill", newSkill)
+        .executeUpdate()
+        .getKey();
+
+        String joinstudent_skillsTableAdd = "INSERT INTO students_skills (student_id, skill_id) VALUES (:student_id, :skill_id)";
+        con.createQuery(joinstudent_skillsTableAdd)
+        .addParameter("student_id", this.getId())
+        .addParameter("skill_id", this.getSkillId())
+        .executeUpdate();
+      }
+
+    }
+  }
+
+  public void addExps(ArrayList<String> newExpsArray){
+    try(Connection con = DB.sql2o.open()) {
+
+      for (String newExp : newExpsArray) {
+        if (this.getExps().contains(newExp)){
+          continue;
+        }
+        String expAdd = "INSERT INTO work_exp (exp) VALUES (:exp)";
+        this.exp_id = (int) con.createQuery(expAdd , true)
+        .addParameter("exp", newExp)
+        .executeUpdate()
+        .getKey();
+
+        String joinstudent_expsTableAdd = "INSERT INTO students_exps (student_id, exp_id) VALUES (:student_id, :exp_id)";
+        con.createQuery(joinstudent_expsTableAdd)
+        .addParameter("student_id", this.getId())
+        .addParameter("exp_id", this.getExpId())
+        .executeUpdate();
+      }
+
     }
   }
 
@@ -86,7 +134,7 @@ public class Student {
   public static List<Student> allStudents() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM students";
-     return con.createQuery(sql).executeAndFetch(Student.class);
+      return con.createQuery(sql).executeAndFetch(Student.class);
     }
   }
 
@@ -94,17 +142,17 @@ public class Student {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM students WHERE id=:id";
       return con.createQuery(sql)
-        .addParameter("id", id)
-        .executeAndFetchFirst(Student.class);
+      .addParameter("id", id)
+      .executeAndFetchFirst(Student.class);
     }
   }
 
   public static Student findStudentByName(String name){
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM students WHERE student_name=:name";
+      String sql = "SELECT * FROM students WHERE student_name=:name ";
       return con.createQuery(sql)
-        .addParameter("name", name)
-        .executeAndFetchFirst(Student.class);
+      .addParameter("name", name)
+      .executeAndFetchFirst(Student.class);
     }
   }
 
@@ -112,9 +160,9 @@ public class Student {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT students.* FROM students JOIN students_skills ON (students.id = students_skills.student_id) JOIN skills ON (students_skills.skill_id = skills.id) WHERE skills.skill = :skill";
       List<Student> students = con.createQuery(sql)
-        .addParameter("skill", skill)
-        .executeAndFetch(Student.class);
-        return students;
+      .addParameter("skill", skill)
+      .executeAndFetch(Student.class);
+      return students;
     }
   }
 
@@ -160,22 +208,23 @@ public class Student {
 
   //update
 
+
   //delete
   public void removeExp(int workexp_id) {
     try(Connection con = DB.sql2o.open()) {
       String deleteQuery = "DELETE FROM work_exp WHERE id = :id; DELETE FROM students_exps WHERE exp_id = :id;";
-        con.createQuery(deleteQuery)
-          .addParameter("id", workexp_id)
-          .executeUpdate();
+      con.createQuery(deleteQuery)
+      .addParameter("id", workexp_id)
+      .executeUpdate();
     }
   }
 
   public void removeSkill(int skill_id) {
     try(Connection con = DB.sql2o.open()) {
       String deleteQuery = "DELETE FROM skills WHERE id = :id; DELETE FROM students_skills WHERE skill_id = :id;";
-        con.createQuery(deleteQuery)
-          .addParameter("id", skill_id)
-          .executeUpdate();
+      con.createQuery(deleteQuery)
+      .addParameter("id", skill_id)
+      .executeUpdate();
     }
   }
 
