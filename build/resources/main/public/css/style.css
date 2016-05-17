@@ -53,8 +53,16 @@ body {
      margin:0px;
 }
 
+#main-content {
+     min-width: 100%;
+     /*background-color: rgba(0,0,0,.89);*/
+     
+
+}
+
 .container {
      margin: auto;
+     
 }
 
 .row {
@@ -62,12 +70,7 @@ body {
 }
 
 #container-background {
-     margin-top:2%;
-    /* left:5%;
-     right:5%;
-     bottom: 1%; 
-     width: 90%;*/
-     
+     margin-top:2%;     
 }
 
 @font-face {
@@ -116,25 +119,31 @@ body {
 h1 {
      text-align: center;
 }
-
 /******************************************
-/* NAV                   
+ // DROPDOWN          
 /*******************************************/
 
-header {
-  width: 100%;
-  /*position: fixed;*/
-  margin: auto;
-  background-color: black;
+.dropdown {
+     position: relative;
 }
-h2 {
-     text-align: center;
-     font-family: codelight;
+
+.dropdown-content {
+     display: none;
+     position: absolute;
+     right: -100px;
+     top: 50px;
+     margin: auto;
+     min-width: 200px;
+     background-color: black;
+     z-index: 1;
+     height: 300px;
 }
 
 form {
     margin: auto;
-    width: 50%;
+    margin-top: 30px;
+    padding:5px;
+    display: block;
     text-align: center;
 }
 
@@ -154,7 +163,7 @@ input#userName.form-control, input#password.form-control {
 }
 
 
-.login, .signup {
+.login {
      display: block;
      margin: auto;
      background-color: inherit!important;
@@ -162,6 +171,24 @@ input#userName.form-control, input#password.form-control {
      text-align: center;
      font-family: nova;
      color: white;
+}
+
+.dropdown-effect {
+     
+}
+
+/******************************************
+/* NAV                   
+/*******************************************/
+
+header {
+  width: 100%;
+  margin: auto;
+  background-color: black;
+}
+h2 {
+     text-align: center;
+     font-family: codelight;
 }
 
 nav {
@@ -175,6 +202,7 @@ nav {
 
 .glyphicon {
      color: white;
+     font-size: 20px;
 }
 
 .right {
@@ -212,6 +240,11 @@ nav ul li a:hover {
 
 li a:hover {
      cursor: pointer;
+}
+
+li:hover {
+     cursor: pointer;
+     color:#3b55a3;
 }
 
 /******************************************
@@ -255,7 +288,6 @@ section {
      float: center;
      margin:auto;
      display: block;
-     /*background-color: black;*/
      color: white;
      font-family: nova;
 }
@@ -265,13 +297,11 @@ section h2 {
 }
 
 .gallery-top {
-   clear: both;
-   background-color: white;
-  position: relative;
-  /*z-index: -2;*/
+     clear: both;
+     background-color: white;
+     position: relative;
+  
 }
-
-
 
 .gallery {
      margin:auto;
@@ -282,8 +312,6 @@ section h2 {
      background-color: black;
      position: relative;
      z-index: -2;
-     
-  
 }
 
 .features {

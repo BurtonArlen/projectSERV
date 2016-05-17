@@ -21,12 +21,27 @@
 		<nav class="clearfix">
 			<ul class="left">
 				<li><span class="glyphicon glyphicon-user"></li>
-				<li><a href="#">Link</a></li>
+				<li><a href="#">Our Mission</a></li>
 			</ul>
 			<ul class="right">
-				<li><a href ="#">Link</a></li>
-				<li><a href="#">Link</a></li>
-				<li><span class="glyphicon glyphicon-pencil"></span></li>
+				<li><a href ="#">Donations</a></li>
+				<li><a href="#">Projects</a></li>
+				<div class="dropdown">
+					<li><span class="glyphicon glyphicon-pencil"></span></li>
+						<div class="dropdown-content">
+						    <form id="login" class="form" action='/login' method='post'>
+								<div class="form-group">
+									<label for="userName">User Name</label>
+									<input id="userName" name="userName" class="form-control" type="text">
+								</div>
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input id="password" name="password" class="form-control" type="text">
+								</div>
+								<button type="submit" class="login btn btn-info">Login</button>
+							</form>
+						</div>
+				</div>
 				<li><a href="#">Link</a></li>
 			</ul>
 		</nav>
@@ -35,54 +50,45 @@
 </div><!--end of banner -->	
 
 
-<div id="container-background" class="container">
-	
-	<div class="row">
+<div id="main-content">
+	<div id="container-background" class="container">
 		
-		<!-- <form id="login" class="form" action='/login' method='post'>
-			<div class="form-group">
-				<label for="userName">User Name</label>
-				<input id="userName" name="userName" class="form-control" type="text">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input id="password" name="password" class="form-control" type="text">
-			</div>
-
-			<button type="submit" class="login btn btn-info">Login</button>
-		</form><!--END OF FORM --> 
-		<div class="wrap">
-			<div class="gallery-top clearfix">
-				<section>
-				 	<ul class="social">
-				 		<li><img src="/images/insta.png"></li>
-				 		<li><img src="/images/facebook.png"></li>
-				 		<li><img src="/images/twitter.png"></li>
-				 	</ul>
-				</section>
-			</div>
-			<div class="gallery clearfix">
-				<div class="features clearfix">
-					<div class="feature-left">
-						<img src="/images/server.jpg">
-						<h2>Host YOUR project on OUR project</h2>
-					</div>
-					<div class="feature-right">
-						<div class="feature-content"><p>Check out our latest work</p></div>
-						<!-- <img src="/images/night.jpg"> -->
-						
-					</div>
-				</div>
-				<div class="footer clear">
-					<div class="footer-content"><p>Check out our latest work</p></div>
-					<div class="footer-content"><p>Check out our latest work</p></div>
-					<div class="footer-content"><p>Check out our latest work</p></div>
-				</div>
-			</div>
+		<div class="row">
 			
+			
+			<div class="wrap">
+				<div class="gallery-top clearfix">
+					<section>
+					 	<ul class="social">
+					 		<li><img src="/images/insta.png"></li>
+					 		<li><img src="/images/facebook.png"></li>
+					 		<li><img src="/images/twitter.png"></li>
+					 	</ul>
+					</section>
+				</div>
+				<div class="gallery clearfix">
+					<div class="features clearfix">
+						<div class="feature-left">
+							<img src="/images/server.jpg">
+							<h2>Host YOUR project on OUR project</h2>
+						</div>
+						<div class="feature-right">
+							<div class="feature-content"><p>Check out our latest work</p></div>
+							<!-- <img src="/images/night.jpg"> -->
+							
+						</div>
+					</div>
+					<div class="footer clear">
+						<div class="footer-content"><p>Check out our latest work</p></div>
+						<div class="footer-content"><p>Check out our latest work</p></div>
+						<div class="footer-content"><p>Check out our latest work</p></div>
+					</div>
+				</div>
+				
+			</div><!--END OF WRAP -->
 		</div><!--END OF ROW -->
-	</div><!--END OF CONTAINER BACKGROUND -->
-	
+		
+	</div><!-- END OF CONTAINER -->
 </div>
 
 

@@ -1,6 +1,9 @@
 
 $(document).ready(function(){
 
-  $('.bxslider').bxSlider();
-  
+  $('.glyphicon-pencil').click(function(){
+  	$('#main-content').css("background-color", "rgba(0,0,0,.89)");
+  	$('.dropdown-content').slideDown(1000);
+  })
+
 });
