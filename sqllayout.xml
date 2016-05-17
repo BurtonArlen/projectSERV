@@ -98,7 +98,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="362" y="305" name="students_workexp">
+<table x="362" y="305" name="students_exps">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="students" row="id" />
