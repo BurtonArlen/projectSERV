@@ -7,7 +7,10 @@ import static spark.Spark.*;
 
 public class App {
   public static void main(String[] args) {
+<<<<<<< HEAD
      setPort(80);
+=======
+>>>>>>> 791c77c14ff69be936fd0f5a90e35dc579304b98
     staticFileLocation("/public");
       get("/", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
