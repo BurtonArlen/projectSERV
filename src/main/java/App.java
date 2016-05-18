@@ -13,7 +13,9 @@ public class App {
     staticFileLocation("/public");
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/home.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
@@ -28,14 +30,18 @@ public class App {
       model.put("errorsArray", request.session().attribute("errorsArray"));
       errorsArray = new ArrayList<Integer>();
       request.session().attribute("errorsArray", errorsArray);
+      model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/signUp.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
     get("/profile/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/profile.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
@@ -77,9 +83,10 @@ public class App {
 
       if(Student.login(userName, password) == null){
         request.session().attribute("loginError", 1);
-        // response.redirect(request.url());
+        response.redirect(request.queryParams("url"));
       }
       else{
+        request.session().attribute("loginError", 0);
         Student student = Student.login(userName, password);
         response.redirect("/profile/" + Integer.toString(student.getId()));
       }
