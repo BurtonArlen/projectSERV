@@ -98,8 +98,8 @@ svg{
 }
 
 @font-face {
-    font-family: codelight;
-    src: url(../fonts/Neou-Bold.otf);
+    font-family: viafont;
+    src: url(../fonts/Viafont.ttf);
 }
 @font-face {
     font-family: code;
@@ -506,6 +506,7 @@ section {
 
 #profile-content {
     margin: auto;
+
    
 }
 
@@ -513,7 +514,7 @@ section {
     background-color: black;
     position: relative;
     border-radius: 50%;
-    top: 150px;
+    top: 100px;
     left: 400px;
     width: 250px;
     height: 250px;
@@ -525,10 +526,29 @@ section {
     border: 1em solid white;
     border-radius: 50%;
     display: block;
-    margin-top: 50px;
+    
     margin: auto;
     height: 200px;
     width: 200px;
+}
+
+.personal-content {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 150px;
+    left: 400px;
+   
+}
+
+.personal-content h1 {
+    color: black;
+    font-family: ethon;
+
+}
+
+.personal-content h2 {
+    font-family: code;
 }
 
 #personal-purple {
@@ -537,7 +557,7 @@ section {
     padding: 150px 0 30px 0;
     position: relative;
     z-index: -3;
-    bottom: 300px;
+    bottom: 600px;
     right: 50px;
     width: 1000px;
     -webkit-transform: rotate(-90deg);
@@ -556,7 +576,7 @@ section {
     
     position: relative;
     height: 130px;
-    bottom: 1200px;
+    bottom: 1400px;
     width: 1400px;
     background:#fcf910;
     
@@ -568,7 +588,7 @@ section {
     position: relative;
     width: 20%;
     left: 150px;
-    bottom: 400px;
+    bottom: 800px;
 
 
 }
@@ -585,16 +605,36 @@ section {
     background-color: black;
     color: white;
     margin: 10%;
+    
 }
 
 main {
     position: relative;
-    top: 80px;
-    left: 580px;
-    height: 400px;
+    top: -30px;
+    left: 650px;
+    /*height: 400px;*/
     width: 600px;
-    border: 0.5em solid black;
+    z-index: 0;
+    /*border: 0.5em solid black;*/
+    
 }
+
+.main-left {
+    float: left;
+    width: 400px;
+    padding: 1%;
+    
+}
+
+.main-right {
+    float: left;
+    width: 200px;
+    padding: 1%;
+    background-color: black;
+    color: white;
+}
+
+
 
 
 /******************************************
