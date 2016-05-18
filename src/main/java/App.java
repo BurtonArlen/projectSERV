@@ -16,7 +16,7 @@ public class App {
 
       get("/signUp", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
-        model.put("template", "templates/profile.vtl");
+        model.put("template", "templates/signUp.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
   }

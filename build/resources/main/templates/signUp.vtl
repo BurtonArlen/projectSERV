@@ -2,7 +2,7 @@
 	<div class="banner">
 		<header class="clearfix">
 			<a href="/"><img id="logo" src="/images/logo3.png"></a>
-			
+
 			<nav class="clearfix">
 				<ul class="left">
 					<li><a href="#">Projects</a></li>
@@ -50,18 +50,18 @@
 				</text>
 
 			</symbol>
-  
+
 			  <g class="g-ants">
 			    <use xlink:href="#s-text"
-			      class="text-copy"></use>     
+			      class="text-copy"></use>
 			    <use xlink:href="#s-text"
-			      class="text-copy"></use>     
+			      class="text-copy"></use>
 			    <use xlink:href="#s-text"
-			      class="text-copy"></use>     
+			      class="text-copy"></use>
 			    <use xlink:href="#s-text"
-			      class="text-copy"></use>     
+			      class="text-copy"></use>
 			    <use xlink:href="#s-text"
-			      class="text-copy"></use>     
+			      class="text-copy"></use>
 			  </g>
 		</svg>
 
@@ -71,11 +71,11 @@
 					<form id="signup" class="form-inline" action='/signup' method='post'>
 						<div class="form-group">
 							<label for="newUserName">User Name</label>
-							<input id="newUserName" name="newUserName" class="form-control" type="text">
+							<input id="newUserName" name="newUserName" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 						</div>
 						<div class="form-group">
 							<label for="newPassword">Password</label>
-							<input id="newPassword" name="newPassword" class="form-control" type="text">
+							<input id="newPassword" name="newPassword" class="form-control" type="password" required pattern="^(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
 						</div>
 
 						<button type="submit" class="signup btn btn-info">Login</button>
