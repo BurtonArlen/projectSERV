@@ -19,8 +19,11 @@ public class App {
         model.put("template", "templates/signUp.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
+
+      get("/profile", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("template", "templates/profile.vtl");
+        return new ModelAndView(model, "templates/layout.vtl");
+      }, new VelocityTemplateEngine());
   }
-
-
-
 }

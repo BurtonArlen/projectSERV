@@ -394,8 +394,6 @@ section {
     width: 50%;
 }
 
-
-
 .feature-right img {
      height: 300px;
      width: 450px;
@@ -404,7 +402,6 @@ section {
      bottom:70%;
      left: 15%;
      z-index: -1;
-     
 }
 
 .feature-left img {
@@ -507,30 +504,93 @@ section {
 
 
 
-.profile-content {
+#profile-content {
+    margin: auto;
    
 }
 
-.container2 {
-     background: #e5c3ff;
-     margin: 0 0 0 26.5625%;
-     min-height: 80%;
-     padding: 130px 3.25% 30px 60.5625%;
-     position: absolute;
-     top: 0;
-     width: 100%;
+.profile-background {
+    background-color: black;
+    position: relative;
+    border-radius: 50%;
+    top: 150px;
+    left: 400px;
+    width: 250px;
+    height: 250px;
 }
 
-.form-background {
-    content: "";
-    z-index: 1;
+.profile-background img {
+    position: relative;
+    top: 30px;
+    border: 1em solid white;
+    border-radius: 50%;
     display: block;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.15);
+    margin-top: 50px;
+    margin: auto;
+    height: 200px;
+    width: 200px;
+}
+
+#personal-purple {
+    background: #e5c3ff;
+    min-height: 30%;
+    padding: 150px 0 30px 0;
+    position: relative;
+    z-index: -3;
+    bottom: 300px;
+    right: 50px;
+    width: 1000px;
+    -webkit-transform: rotate(-90deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+
+    /* IE */
+    -ms-transform: rotate(-90deg);
+
+    /* Opera */
+    -o-transform: rotate(-90deg);
+}
+
+#personal-yellow {
+    padding:  3.25% 30px 0;
+    position: relative;
+    height: 130px;
+    bottom: 1700px;
+    min-width:70%;
+    background:#fcf910;
+    
+    left: 150px;
+    z-index: -4;
+}
+
+.purple-container {
+    position: relative;
+
+
+}
+
+.purple-content {
+
+}
+
+.purple-content p {
+    display: block;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin: 10%;
+}
+
+main {
+    position: relative;
+    top: 80px;
+    left: 580px;
+    height: 400px;
+    width: 600px;
+    border: 0.5em solid black;
 }
 
 
