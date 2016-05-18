@@ -553,11 +553,11 @@ section {
 }
 
 #personal-yellow {
-    padding:  3.25% 30px 0;
+    
     position: relative;
     height: 130px;
-    bottom: 1700px;
-    min-width:70%;
+    bottom: 1200px;
+    width: 1400px;
     background:#fcf910;
     
     left: 150px;
@@ -566,6 +566,9 @@ section {
 
 .purple-container {
     position: relative;
+    width: 20%;
+    left: 150px;
+    bottom: 400px;
 
 
 }
