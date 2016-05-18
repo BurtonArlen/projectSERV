@@ -84,13 +84,13 @@ svg{
      
 }
 
-.row {
-     
-}
-
 #container-background {
      margin-top:2%;     
 }
+
+/******************************************
+/* FONTS                   
+/*******************************************/
 
 @font-face {
     font-family: nova;
@@ -117,40 +117,45 @@ svg{
     font-family: aliens;
     src: url(../fonts/aliensandcows.ttf);
 }
-.epi {
-     color:#3b55a3;
-     font-family: code;
+@font-face {
+    font-family: ethon;
+    src: url(../fonts/EthBlackEthon.ttf);
+}
+@font-face {
+    font-family: strong;
+    src: url(../fonts/StrongGlasgow.ttf);
+}
+.epi, .us {
+     color:black;
+     font-family: ethon;
      text-transform: lowercase;
 }
 
-.us {
-     color:#3b55a3;
-     font-family: code;
-     text-transform: lowercase;
+em {
+    color: white;
+    font-family: strong;
+    font-size: 70px;
 }
 
 .serve {
      color:white;
      font-size: 50px;
-     font-family: code;
+     font-family: ethon;
 }
 
 #logo {
-     /*position: fixed;*/
-     /*display: none;*/
+/*     
      height: 80px;
      display: block;
-     margin:auto;
+     margin:auto;*/
     /* top: 10;
      left: 0;*/
 }
 
-h1 {
-     text-align: center;
+.glyphicon {
+     color: black;
+     font-size: 20px;
 }
-
-
-
 
 /******************************************
  // DROPDOWN          
@@ -207,37 +212,78 @@ label {
 header {
   width: 100%;
   margin: auto;
-  /*background-color: rgba(0,0,0,.89);*/
+  
+}
+
+.header-background {
+    /*background-color: rgba(0,0,0);*/
+    background-image:
+    linear-gradient(
+      to right, 
+      black, white
+    );
+    width: 70%;
+
+}
+
+.header-background h1 {
+    display: inline-block;
 }
 
 .banner {
-    /*background-color: rgba(0,0,0,.89);*/
     width: 100%;
     margin: auto;
 }
+
 h2 {
-     text-align: center;
-     font-family: codelight;
+    text-align: center;
+    font-family: codelight;
 }
 
 .clearfix nav {
   margin: auto;
   width: 100%;
-  background-color: inherit;
+  
 }
 
 .left {
-     float: left;
-}
-
-.glyphicon {
-     color: white;
-     font-size: 20px;
+     /*float: left;*/
 }
 
 .right {
      float: right;
+
 }
+
+.nav-right {
+    position: relative;
+    bottom:30px;
+}
+
+ul.clearfix.left {
+    width: inherit
+}
+
+nav.clearfix.nav-left {
+    float: left;
+    position: relative;
+    width: 33.333%;
+    top: 75px;
+    left: 10px;
+}
+
+nav.nav-left li {
+    font-size: 150%;
+    display: inline-block;
+}
+
+h1 {
+    text-align: center;
+    float: right;   
+    width: 50%; 
+}
+
+
 
 nav ul {
      list-style-type: none;
