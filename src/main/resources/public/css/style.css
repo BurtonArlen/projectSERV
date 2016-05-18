@@ -42,7 +42,7 @@ Developer @GA in NYC
 }
 
 @import "compass/css3";
-@import "../../sass/animation.scss";
+/*@import "../../sass/animation.scss";*/
 
 @import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
 
@@ -52,7 +52,7 @@ Developer @GA in NYC
 /*******************************************/
 
 body {
-     color: #000;
+     /*color: #000;*/
      font-size: 12px;
      line-height: 1.4;
      font-family: Helvetica, Arial, sans-serif;
@@ -174,7 +174,6 @@ h1 {
 
 form {
     margin: auto;
-    
     padding:10px!important;
     display: block;
     text-align: center;
@@ -208,16 +207,23 @@ label {
 header {
   width: 100%;
   margin: auto;
-  background-color: black;
+  background-color: rgba(0,0,0,.89);
+}
+
+.banner {
+    background-color: rgba(0,0,0,.89);
+    width: 100%;
+  margin: auto;
 }
 h2 {
      text-align: center;
      font-family: codelight;
 }
 
-nav {
+.clearfix nav {
   margin: auto;
   width: 100%;
+  background-color: inherit;
 }
 
 .left {
@@ -305,8 +311,7 @@ li:hover {
      max-width: 1280px;
      margin: 0 auto;
      position: relative;
-     background-color: #000;
-     /*z-index: -3;*/
+     z-index: -3;
 
   }
 
@@ -325,21 +330,20 @@ section {
      font-family: nova;
 }
 
-section h2 {
-     margin:0;
-}
+
 
 .gallery-top {
      clear: both;
-     background-color: white;
+     background-color: transparent;
      position: relative;
+     margin-bottom: 2%;
   
 }
 
 .gallery {
      margin:auto;
      margin-bottom:2%;
-     border-bottom: 1em #cecfca;
+     
      border-left: 1em #cecfca;
      border-right: 1em #cecfca;
      background-color: black;
@@ -383,18 +387,13 @@ section h2 {
 }
 
 .feature-right.footer-content p {
-     padding: 0;
-     margin:0;
-     width: 200px;
-     background-color: rgba(0,0,0,.89);
+    
 }
 
-.feature-right .footer-content {
+.feature-right.footer-content {
      width: 200px;
-     background-color: rgba(0,0,0,.89);
+     background-color: rgba(0,0,0,.89);    
 }
-
-
 
 .feature-left h2 {
      font-family: nova;
@@ -415,12 +414,10 @@ section h2 {
 
 
 .footer {
-  border-top: 1em solid black;
   height: 200px;
-  background-color: white;
   margin: auto;
   position: relative;
-  /*z-index: -1;*/
+  z-index: 0;
 }
 
 .footer-content {
@@ -439,6 +436,41 @@ section h2 {
   margin: 10%;
 }
 
+.extra-purple {
+    background: #e5c3ff;
+    min-height: 20%;
+    padding: 130px 3.25% 30px 60.5625%;
+    position: relative;
+    z-index: -4;
+    bottom: 160px;
+    right: 60px;
+    width: 1280px;
+
+}
+
+.extra-yellow {
+    padding: 130px 3.25% 30px 60.5625%;
+    position: relative;
+    width: 80px;
+    min-height:80%;
+    background:#fcf910;
+    bottom: 500px;
+    left: 700px;
+    z-index: -4;
+    /* Safari */
+    -webkit-transform: rotate(-90deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+
+    /* IE */
+    -ms-transform: rotate(-90deg);
+
+    /* Opera */
+    -o-transform: rotate(-90deg);
+
+}
+
 
 /******************************************
 /* PROFILE VTL STYLES
@@ -451,7 +483,6 @@ section h2 {
 }
 
 .container2 {
-     
      background: #e5c3ff;
      margin: 0 0 0 26.5625%;
      min-height: 80%;
@@ -462,7 +493,7 @@ section h2 {
 }
 
 .form-background {
-     content: "";
+    content: "";
     z-index: 1;
     display: block;
     position: absolute;
@@ -471,6 +502,18 @@ section h2 {
     left: 0;
     right: 0;
     background: rgba(0,0,0,0.15);
+}
+
+
+/******************************************
+/* MEDIA QUERIES
+/*******************************************/
+
+@media only screen and (min-width: 1440px){ /* MEDIA QUERY FOR MONITOR  */
+
+
+
+
 }
 
 
