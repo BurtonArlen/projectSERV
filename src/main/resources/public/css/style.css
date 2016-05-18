@@ -126,15 +126,16 @@ svg{
     src: url(../fonts/StrongGlasgow.ttf);
 }
 .epi, .us {
-     color:black;
+     color:darkgray;
      font-family: ethon;
      text-transform: lowercase;
 }
 
 em {
     color: white;
-    font-family: strong;
+    /*font-family: strong;*/
     font-size: 70px;
+    padding: 0;
 }
 
 .serve {
@@ -216,11 +217,11 @@ header {
 }
 
 .header-background {
-    
+    background-color: #212647;
     background-image:
     linear-gradient(
       to right, 
-      black, white
+      #212647, white
     );
     width: 70%;
 
@@ -228,6 +229,10 @@ header {
 
 .header-background h1 {
     display: inline-block;
+}
+.header-background h1 a:hover {
+    text-decoration: none;
+    color: 
 }
 
 .banner {

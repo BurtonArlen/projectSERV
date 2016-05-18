@@ -126,14 +126,14 @@ svg{
     src: url(../fonts/StrongGlasgow.ttf);
 }
 .epi, .us {
-     color:black;
+     color:darkgray;
      font-family: ethon;
      text-transform: lowercase;
 }
 
 em {
     color: white;
-    font-family: strong;
+    /*font-family: strong;*/
     font-size: 70px;
 }
 
@@ -216,11 +216,11 @@ header {
 }
 
 .header-background {
-    
+    background-color: #212647;
     background-image:
     linear-gradient(
       to right, 
-      black, white
+      #212647, white
     );
     width: 70%;
 
@@ -228,6 +228,10 @@ header {
 
 .header-background h1 {
     display: inline-block;
+}
+.header-background h1 a:hover {
+    text-decoration: none;
+    color: 
 }
 
 .banner {
@@ -605,7 +609,7 @@ section {
     background-color: black;
     color: white;
     margin: 10%;
-    font-family: viafont;
+    
 }
 
 main {
@@ -634,9 +638,7 @@ main {
     color: white;
 }
 
-.main-right h2 {
-    font-family: viafont;
-}
+
 
 
 /******************************************
