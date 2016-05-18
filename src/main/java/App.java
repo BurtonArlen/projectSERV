@@ -19,13 +19,7 @@ public class App {
 
       get("/signUp", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
-        model.put("template", "templates/home.vtl");
-        return new ModelAndView(model, "templates/signUp.vtl");
-      }, new VelocityTemplateEngine());
-
-      get("/profile", (request, response) -> {
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("template", "templates/profile.vtl");
+        model.put("template", "templates/signUp.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
       }, new VelocityTemplateEngine());
 
@@ -41,7 +35,7 @@ public class App {
       //   int student_id = Integer.parseInt(queryParams("student_id"));
       //   model.put("students", Student.find(student_id));
       //   model.put("template", "templates/profile.vtl");
-      //   return new ModelAndView(model, "templates/layout.vtl");
+      //   return new ModelAndView(model, "templates/studentProfile.vtl");
       // }, new VelocityTemplateEngine());
   }
 
