@@ -10,6 +10,13 @@
 	      <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	  	<![endif]-->
 		<link rel='stylesheet' href='/css/style.css'>
+		#if($loginError == 1)
+		<script type="text/javascript">
+			window.onload = function(){
+				$(".glyphicon-pencil").click();
+			}
+		</script>
+		#end
 	</head>
 	<body>
 

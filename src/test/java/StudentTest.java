@@ -13,27 +13,27 @@ public class StudentTest {
 
   @Test
   public void Student_instantiatesCorrectly_true(){
-    Student myStudent = new Student("dave", "davey");
+    Student myStudent = new Student("dave", "davey", "dave@dave.dave", "davey");
     assertTrue(myStudent instanceof Student);
   }
 
   @Test
   public void equals_returnsTrueIfDescriptionsAretheSame() {
-    Student firstStudent = new Student("dave", "davey");
-    Student secondStudent = new Student("dave", "davey");
+    Student firstStudent = new Student("dave", "davey", "dave@dave.dave", "davey");
+    Student secondStudent = new Student("dave", "davey", "dave@dave.dave", "davey");
     assertTrue(firstStudent.equals(secondStudent));
   }
 
   @Test
   public void save_returnsTrueIfNamesAretheSame_Student() {
-    Student testStudent = new Student("dave", "davey");
+    Student testStudent = new Student("dave", "davey", "dave@dave.dave", "davey");
     testStudent.save();
     assertTrue(Student.allStudents().get(0).equals(testStudent));
   }
 
   @Test
   public void find_returnsCorrectStudentSearchedFor_Student() {
-    Student testStudent = new Student("dave", "davey");
+    Student testStudent = new Student("dave", "davey", "dave@dave.dave", "davey");
     testStudent.save();
     assertTrue(Student.findStudentById(testStudent.getId()).equals(testStudent));
   }
@@ -102,6 +102,7 @@ public class StudentTest {
     if(student == null){
       student = myStudent2;
     }
+    assertEquals(false, Student.checkEmailAvailable("dave@dave.dave"));
     assertEquals(Student.allStudents().get(1).getExps(), myStudent2.getExps());
     assertEquals(student.getStudentFirstName(), myStudent2.getStudentFirstName());
     assertEquals(Student.allStudents().get(1).getSkills(), myStudent2.getSkills());

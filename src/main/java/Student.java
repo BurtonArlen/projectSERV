@@ -22,9 +22,11 @@ public class Student {
   private int exp_id;
   private ArrayList<String> experienceArray = new ArrayList<String>();
 
-  public Student(String student_first_name, String student_last_name) {
+  public Student(String student_first_name, String student_last_name, String email, String password) {
     this.student_first_name = student_first_name;
     this.student_last_name = student_last_name;
+    this.email = email;
+    this.password = password;
   }
 
   public Student(String student_first_name, String student_last_name, String bio, String email, String password, ArrayList<String> skillsArray, ArrayList<String> experienceArray) {
@@ -143,6 +145,23 @@ public class Student {
       return con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Student.class);
+    }
+  }
+
+  public static Student findStudentByEmail(String email){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM students WHERE email=:email ORDER BY student_last_name ASC";
+      return con.createQuery(sql)
+      .addParameter("email", email)
+      .executeAndFetchFirst(Student.class);
+    }
+  }
+
+  public static boolean checkEmailAvailable(String email){
+    if(Student.findStudentByEmail(email) == null){
+      return true;
+    }else{
+      return false;
     }
   }
 

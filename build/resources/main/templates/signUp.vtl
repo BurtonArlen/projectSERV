@@ -9,7 +9,7 @@
 			</ul>
 			<ul class="right">
 				<li><span class="glyphicon glyphicon-user"></li>
-				<div class="dropdown">
+				<div class="dropdown" href="#login">
 					<li><span class="glyphicon glyphicon-pencil"></span></li>
 						<div class="dropdown-content">
 								<form id="login" class="form" action='/login' method='post'>
@@ -67,7 +67,7 @@
 	<div class="wrap">
 		<div class="container2">
 			<div class="form-background">
-				<form id="signup" class="form-group" action='/signup' method='post'>
+				<form id="signup" class="form-group" action='/signUp' method='post'>
 					<div class="form-group">
 						<label for="newUserFirstName">First Name</label>
 						<input id="newUserFirstName" name="newUserFirstName" class="form-control" type="text">
@@ -77,11 +77,17 @@
 						<input id="newUserLastName" name="newUserLastName" class="form-control" type="text">
 					</div>
 					<div class="form-group">
-						<label for="newUserName">Email Address</label>
-						<input id="newUserName" name="newUserName" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+						<label for="newUserEmail">Email Address</label>
+            #if($errorsArray.contains(1))
+              <br><label for="newUserEmail" class="red">Email Already Exists</label>
+            #end
+						<input id="newUserEmail" name="newUserEmail" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 					</div>
 					<div class="form-group">
 						<label for="newPassword">Password</label>
+            #if($errorsArray.contains(2))
+              <br><label for="newPassword" class="red">Passwords Didn't Match</label>
+            #end
 						<input id="newPassword" name="newPassword" class="form-control" type="password" required pattern="^(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
 					</div>
 					<div class="form-group">
