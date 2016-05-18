@@ -9,13 +9,12 @@ import java.util.ArrayList;
 public class Student {
 
   private int id;
-  private String student_name;
+  private String student_first_name;
+  private String student_last_name;
   private String bio;
 
   private String email;
   private String password;
-
-  private Timestamp created_at;
 
   private int skill_id;
   private ArrayList<String> skillsArray = new ArrayList<String>();
@@ -23,32 +22,32 @@ public class Student {
   private int exp_id;
   private ArrayList<String> experienceArray = new ArrayList<String>();
 
-  public Student(String student_name) {
-    this.student_name = student_name;
-    created_at = new Timestamp(new Date().getTime());
+  public Student(String student_first_name, String student_last_name) {
+    this.student_first_name = student_first_name;
+    this.student_last_name = student_last_name;
   }
 
-  public Student(String student_name, String bio, String email, String password, ArrayList<String> skillsArray, ArrayList<String> experienceArray) {
-    this.student_name = student_name;
+  public Student(String student_first_name, String student_last_name, String bio, String email, String password, ArrayList<String> skillsArray, ArrayList<String> experienceArray) {
+    this.student_first_name = student_first_name;
+    this.student_last_name = student_last_name;
     this.bio = bio;
     this.email = email;
     this.password = password;
     this.skillsArray = skillsArray;
     this.experienceArray = experienceArray;
-    created_at = new Timestamp(new Date().getTime());
   }
 
 
   //create
   public void save(){
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO students (email, password, student_name, bio, created_at) VALUES ( :email, :password, :student_name, :bio, :created_at)";
+      String sql = "INSERT INTO students (student_first_name, student_last_name, bio, email, password) VALUES ( :student_first_name, :student_last_name, :bio, :email, :password)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("email", email)
       .addParameter("password", password)
-      .addParameter("student_name", student_name)
+      .addParameter("student_first_name", student_first_name)
+      .addParameter("student_last_name", student_last_name)
       .addParameter("bio", bio)
-      .addParameter("created_at", created_at)
       .executeUpdate()
       .getKey();
 
@@ -133,32 +132,23 @@ public class Student {
   //read
   public static List<Student> allStudents() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM students";
+      String sql = "SELECT * FROM students ORDER BY student_last_name ASC";
       return con.createQuery(sql).executeAndFetch(Student.class);
     }
   }
 
   public static Student findStudentById(int id){
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM students WHERE id=:id";
+      String sql = "SELECT * FROM students WHERE id=:id ORDER BY student_last_name ASC";
       return con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Student.class);
     }
   }
 
-  public static Student findStudentByName(String name){
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM students WHERE student_name=:name ";
-      return con.createQuery(sql)
-      .addParameter("name", name)
-      .executeAndFetchFirst(Student.class);
-    }
-  }
-
   public static List<Student> findStudentsBySkill(String skill){
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT students.* FROM students JOIN students_skills ON (students.id = students_skills.student_id) JOIN skills ON (students_skills.skill_id = skills.id) WHERE skills.skill = :skill";
+      String sql = "SELECT students.* FROM students JOIN students_skills ON (students.id = students_skills.student_id) JOIN skills ON (students_skills.skill_id = skills.id) WHERE skills.skill = :skill ORDER BY student_last_name ASC";
       List<Student> students = con.createQuery(sql)
       .addParameter("skill", skill)
       .executeAndFetch(Student.class);
@@ -206,6 +196,16 @@ public class Student {
     }
   }
 
+  public static Student login (String email, String password){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM students WHERE email=:email AND password=:password";
+      return con.createQuery(sql)
+      .addParameter("email", email)
+      .addParameter("password", password)
+      .executeAndFetchFirst(Student.class);
+    }
+  }
+
   //update
 
 
@@ -235,7 +235,7 @@ public class Student {
     } else {
       Student newStudent = (Student) otherStudent;
       return this.getId() == newStudent.getId()
-      && this.getStudentName().equals(newStudent.getStudentName());
+      && this.getStudentFirstName().equals(newStudent.getStudentFirstName());
     }
   }
 
@@ -251,12 +251,12 @@ public class Student {
     return exp_id;
   }
 
-  public String getStudentName(){
-    return student_name;
+  public String getStudentFirstName(){
+    return student_first_name;
   }
 
-  public Timestamp getCreatedAt(){
-    return created_at;
+  public String getStudentLastName(){
+    return student_last_name;
   }
 
 }
