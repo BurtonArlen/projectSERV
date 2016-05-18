@@ -207,13 +207,13 @@ label {
 header {
   width: 100%;
   margin: auto;
-  background-color: rgba(0,0,0,.89);
+  /*background-color: rgba(0,0,0,.89);*/
 }
 
 .banner {
-    background-color: rgba(0,0,0,.89);
+    /*background-color: rgba(0,0,0,.89);*/
     width: 100%;
-  margin: auto;
+    margin: auto;
 }
 h2 {
      text-align: center;
