@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
+
 archivesBaseName = "projectSERV"
 version = '1.0'
 mainClassName = "App"
@@ -10,6 +11,7 @@ repositories {
 }
 
 dependencies {
+
   compile group: 'com.sparkjava', name: 'spark-core', version: '2.3'
   compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
   compile group: 'org.sql2o', name: 'sql2o', version: '1.5.4'

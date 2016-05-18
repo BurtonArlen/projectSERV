@@ -114,8 +114,8 @@ svg{
     src: url(../fonts/HACKED.ttf);
 }
 @font-face {
-    font-family: aliens;
-    src: url(../fonts/aliensandcows.ttf);
+    font-family: conthrax;
+    src: url(../fonts/conthrax.ttf);
 }
 .epi {
      color:#3b55a3;
@@ -262,8 +262,8 @@ nav ul li {
 nav ul li a {
      color: white;
      text-decoration: none;
-     font-family: aliens;
-     font-size: 150%;
+     font-family: conthrax;
+     font-size: 100%;
 
 }
 
@@ -316,8 +316,8 @@ li:hover {
   }
 
   p {
-     font-family: aliens;
-     font-size: 200%;
+     font-family: conthrax;
+     font-size: 150%;
   }
 
 section {
@@ -471,6 +471,9 @@ section {
 
 }
 
+#rightImage{
+  padding-top: 5%
+}
 
 /******************************************
 /* PROFILE VTL STYLES
@@ -486,10 +489,10 @@ section {
      background: #e5c3ff;
      margin: 0 0 0 26.5625%;
      min-height: 80%;
-     padding: 130px 3.25% 30px 60.5625%;
+     padding: 70% 0px 0px 0px;
      position: absolute;
      top: 0;
-     width: 100%;
+     width: 65%;
 }
 
 .form-background {
