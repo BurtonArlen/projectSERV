@@ -216,7 +216,7 @@ header {
 }
 
 .header-background {
-    /*background-color: rgba(0,0,0);*/
+    
     background-image:
     linear-gradient(
       to right, 
@@ -252,6 +252,8 @@ h2 {
 
 .right {
      float: right;
+     position: relative;
+     bottom: 30px;
 
 }
 
@@ -260,22 +262,6 @@ h2 {
     bottom:30px;
 }
 
-ul.clearfix.left {
-    width: inherit
-}
-
-nav.clearfix.nav-left {
-    float: left;
-    position: relative;
-    width: 33.333%;
-    top: 75px;
-    left: 10px;
-}
-
-nav.nav-left li {
-    font-size: 150%;
-    display: inline-block;
-}
 
 h1 {
     text-align: center;
@@ -293,8 +279,7 @@ nav ul {
      flex-direction: row;
      justify-content: space-between;
      font-size: 100%;
-     width: 33.333%;
-     
+     width: 33.333%;    
 }
 
 nav ul li {
@@ -330,6 +315,7 @@ li:hover {
 /******************************************
 /* GALLERY TOP
 /*******************************************/
+
 .social {
      list-style-type: none;
      padding: 0;
@@ -358,7 +344,6 @@ li:hover {
      margin: 0 auto;
      position: relative;
      z-index: -3;
-
   }
 
   p {
@@ -376,39 +361,37 @@ section {
      font-family: nova;
 }
 
-
-
 .gallery-top {
      clear: both;
      background-color: transparent;
      position: relative;
      margin-bottom: 2%;
-  
 }
 
 .gallery {
-     margin:auto;
-     margin-bottom:2%;
-     
-     border-left: 1em #cecfca;
-     border-right: 1em #cecfca;
-     background-color: black;
-     position: relative;
-     z-index: -2;
+    margin:auto;
+    margin-bottom:2%;
+    background-color: black;
+   /* background-image:
+        linear-gradient(
+          to right, 
+          black, transparent
+        );*/
+    position: relative;
+    z-index: -2;
 }
 
 .features {
-     margin:2%;
-     position: relative;
-     z-index: -2;
-     
+    margin:2%;
+    position: relative;
+    z-index: -2;
 }
 
 .feature-left, .feature-right {
-     position: relative;
-     float: left;
-     height:300px;
-     width: 50%;
+    position: relative;
+    float: left;
+    height:300px;
+    width: 50%;
 }
 
 
@@ -437,8 +420,8 @@ section {
 }
 
 .feature-right.footer-content {
-     width: 200px;
-     background-color: rgba(0,0,0,.89);    
+     width: 300px;
+     background-color: rgba(0,0,0,.4);    
 }
 
 .feature-left h2 {
