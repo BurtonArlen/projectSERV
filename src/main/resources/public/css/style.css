@@ -86,6 +86,10 @@ svg{
 
 }
 
+.row {
+
+}
+
 #container-background {
      margin-top:2%;
 }
@@ -119,45 +123,40 @@ svg{
     font-family: conthrax;
     src: url(../fonts/conthrax.ttf);
 }
-@font-face {
-    font-family: ethon;
-    src: url(../fonts/EthBlackEthon.ttf);
-}
-@font-face {
-    font-family: strong;
-    src: url(../fonts/StrongGlasgow.ttf);
-}
-.epi, .us {
-     color:black;
-     font-family: ethon;
+
+.epi {
+     color:#3b55a3;
+     font-family: code;
      text-transform: lowercase;
 }
 
-em {
-    color: white;
-    font-family: strong;
-    font-size: 70px;
+.us {
+     color:#3b55a3;
+     font-family: code;
+     text-transform: lowercase;
 }
 
 .serve {
      color:white;
      font-size: 50px;
-     font-family: ethon;
+     font-family: code;
 }
 
 #logo {
-/*
+     /*position: fixed;*/
+     /*display: none;*/
      height: 80px;
      display: block;
-     margin:auto;*/
+     margin:auto;
     /* top: 10;
      left: 0;*/
 }
 
-.glyphicon {
-     color: black;
-     font-size: 20px;
+
+h1 {
+     text-align: center;
 }
+
 
 /******************************************
  // DROPDOWN
@@ -214,64 +213,37 @@ label {
 header {
   width: 100%;
   margin: auto;
-
-}
-
-.header-background {
-
-    background-image:
-    linear-gradient(
-      to right,
-      black, white
-    );
-    width: 70%;
-
-}
-
-.header-background h1 {
-    display: inline-block;
+  background-color: rgba(0,0,0,.89);
 }
 
 .banner {
+    background-color: rgba(0,0,0,.89);
     width: 100%;
-    margin: auto;
+  margin: auto;
 }
-
 h2 {
-    text-align: center;
-    font-family: codelight;
+     text-align: center;
+     font-family: codelight;
 }
 
 .clearfix nav {
   margin: auto;
   width: 100%;
-
+  background-color: inherit;
 }
 
 .left {
-     /*float: left;*/
+     float: left;
+}
+
+.glyphicon {
+     color: white;
+     font-size: 20px;
 }
 
 .right {
      float: right;
-     position: relative;
-     bottom: 30px;
-
 }
-
-.nav-right {
-    position: relative;
-    bottom:30px;
-}
-
-
-h1 {
-    text-align: center;
-    float: right;
-    width: 50%;
-}
-
-
 
 nav ul {
      list-style-type: none;
@@ -282,6 +254,7 @@ nav ul {
      justify-content: space-between;
      font-size: 100%;
      width: 33.333%;
+
 }
 
 nav ul li {
@@ -346,6 +319,7 @@ li:hover {
      margin: 0 auto;
      position: relative;
      z-index: -3;
+
   }
 
   p {
@@ -386,8 +360,6 @@ section {
      margin:2%;
      position: relative;
      z-index: -2;
-
-=======
 }
 
 .gallery {
@@ -407,15 +379,15 @@ section {
     margin:2%;
     position: relative;
     z-index: -2;
->>>>>>> c9ab5d9567725a08618d410d9db8c694d95f310c
 }
 
 .feature-left, .feature-right {
-    position: relative;
-    float: left;
-    height:300px;
-    width: 50%;
+     position: relative;
+     float: left;
+     height:300px;
+     width: 50%;
 }
+
 
 .feature-right img {
      height: 300px;
@@ -543,7 +515,6 @@ section {
     left: 400px;
     width: 250px;
     height: 250px;
->>>>>>> c9ab5d9567725a08618d410d9db8c694d95f310c
 }
 
 .profile-background img {

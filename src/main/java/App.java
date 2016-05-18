@@ -14,7 +14,9 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/home.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
@@ -29,10 +31,13 @@ public class App {
       model.put("errorsArray", request.session().attribute("errorsArray"));
       errorsArray = new ArrayList<Integer>();
       request.session().attribute("errorsArray", errorsArray);
+      model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/signUp.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
+
 
     get("/newMember/test", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -48,7 +53,9 @@ public class App {
 
     get("/profile/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/profile.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
@@ -84,25 +91,21 @@ public class App {
 
     post("/login", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      ArrayList<Integer> errorTypes = new ArrayList<Integer>();
-
       String userName = request.queryParams("userName");
       String password = request.queryParams("password");
 
-      if(Student.login(userName, password)){
+      if(Student.login(userName, password) == null){
         request.session().attribute("loginError", 1);
-        response.redirect(request.url());
+        response.redirect(request.queryParams("url"));
       }
-      if(errorTypes.size() > 0){
-
-      }else{
-      Student newStudent = new Student(newUserFirstName, newUserLastName, newUserEmail, newPassword);
-      newStudent.save();
-
-      response.redirect("/profile/" + Integer.toString(newStudent.getId()));
+      else{
+        request.session().attribute("loginError", 0);
+        Student student = Student.login(userName, password);
+        response.redirect("/profile/" + Integer.toString(student.getId()));
       }
       return null;
     });
+
 
   }
 }

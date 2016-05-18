@@ -39,8 +39,13 @@ Thumbs.db
 ########
 build/
 <<<<<<< HEAD
+<<<<<<< HEAD
 .gradle/
 =======
 .gradle/
 Status API Training Shop Blog About
 >>>>>>> backend
+=======
+.gradle/
+Status API Training Shop Blog About
+>>>>>>> 24b99e54e3e4a334b71a463c7f85ca307dc78141
