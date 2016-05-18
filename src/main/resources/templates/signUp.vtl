@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="banner">
 	<header class="clearfix">
 		<img id="logo" src="/images/eS-logo.png">
@@ -56,3 +57,91 @@
 		<button type="submit" class="signup btn btn-info">Login</button>
 	</form>
 </div>
+=======
+
+	<div class="banner">
+		<header class="clearfix">
+			<a href="/"><img id="logo" src="/images/logo3.png"></a>
+
+			<nav class="clearfix">
+				<ul class="left">
+					<li><a href="#">Projects</a></li>
+					<li><a href="#">Our Mission</a></li>
+				</ul>
+				<ul class="right">
+					<li><span class="glyphicon glyphicon-user"></li>
+					<div class="dropdown">
+						<li><span class="glyphicon glyphicon-pencil"></span></li>
+							<div class="dropdown-content">
+							    <form id="login" class="form" action='/login' method='post'>
+									<div class="form-group">
+										<label for="userName">User Name</label>
+										<input id="userName" name="userName" class="form-control" type="text">
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input id="password" name="password" class="form-control" type="text">
+									</div>
+									<button type="submit" class="login btn btn-info">Login</button>
+								</form>
+							</div>
+					</div>
+					<li><span class="glyphicon glyphicon-search"></span></li>
+				</ul>
+			</nav>
+		</header><!--END OF HEADER -->
+	</div>
+	<div class="profile-content">
+		<svg viewBox="0 0 800 600">
+			<symbol id="s-text">
+				<text text-anchor="middle"
+				      x="50%"
+				      y="35%"
+				      class="text--line"
+				      >
+				  Sign
+				</text>
+				<text text-anchor="middle"
+				      x="50%"
+				      y="68%"
+				      class="text--line2"
+				      >
+				  Up
+				</text>
+
+			</symbol>
+
+			  <g class="g-ants">
+			    <use xlink:href="#s-text"
+			      class="text-copy"></use>
+			    <use xlink:href="#s-text"
+			      class="text-copy"></use>
+			    <use xlink:href="#s-text"
+			      class="text-copy"></use>
+			    <use xlink:href="#s-text"
+			      class="text-copy"></use>
+			    <use xlink:href="#s-text"
+			      class="text-copy"></use>
+			  </g>
+		</svg>
+
+		<div class="wrap">
+			<div class="container2">
+				<div class="form-background">
+					<form id="signup" class="form-inline" action='/signup' method='post'>
+						<div class="form-group">
+							<label for="newUserName">User Name</label>
+							<input id="newUserName" name="newUserName" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+						</div>
+						<div class="form-group">
+							<label for="newPassword">Password</label>
+							<input id="newPassword" name="newPassword" class="form-control" type="password" required pattern="^(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+						</div>
+
+						<button type="submit" class="signup btn btn-info">Login</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+>>>>>>> 938193e15d0bbf567fa57edd3b082ca0cdd42fcd

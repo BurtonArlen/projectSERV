@@ -39,8 +39,6 @@ public class App {
       // }, new VelocityTemplateEngine());
   }
 
-  public static Boolean methodName(String userInput) {
-    return true;
-  }
+
 
 }
