@@ -1,6 +1,8 @@
 import java.util.*;
-import java.util.Map;
-import java.util.HashMap;
+import java.io.*;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.FileItem;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
@@ -116,5 +118,28 @@ public class App {
       }
       return null;
     });
+
+    // post("/upload", (req, res) -> {
+    //   final File upload = new File("upload");
+    //   if (!upload.exists() && !upload.mkdirs()) {
+    //     throw new RuntimeException("Failed to create directory " + upload.getAbsolutePath());
+    //   }
+    //
+    //   // apache commons-fileupload to handle file upload
+    //   DiskFileItemFactory factory = new DiskFileItemFactory();
+    //   factory.setRepository(upload);
+    //   ServletFileUpload fileUpload = new ServletFileUpload(factory);
+    //   List<FileItem> items = fileUpload.parseRequest(req.raw());
+    //
+    //   // image is the field name that we want to save
+    //   FileItem item = items.stream()
+    //   .filter(e -> "image".equals(e.getFieldName()))
+    //   .findFirst().get();
+    //   String fileName = item.getName();
+    //   item.write(new File("/public/images/users", fileName));
+    //   halt(200);
+    //   return null;
+    // });
+
   }
 }
