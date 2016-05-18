@@ -71,22 +71,17 @@ public class App {
 
     post("/login", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      ArrayList<Integer> errorTypes = new ArrayList<Integer>();
 
       String userName = request.queryParams("userName");
       String password = request.queryParams("password");
 
-      if(Student.login(userName, password)){
+      if(Student.login(userName, password) == null){
         request.session().attribute("loginError", 1);
-        response.redirect(request.url());
+        // response.redirect(request.url());
       }
-      if(errorTypes.size() > 0){
-
-      }else{
-      Student newStudent = new Student(newUserFirstName, newUserLastName, newUserEmail, newPassword);
-      newStudent.save();
-
-      response.redirect("/profile/" + Integer.toString(newStudent.getId()));
+      else{
+        Student student = Student.login(userName, password);
+        response.redirect("/profile/" + Integer.toString(student.getId()));
       }
       return null;
     });
