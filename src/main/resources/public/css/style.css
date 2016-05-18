@@ -488,20 +488,20 @@ section {
 }
 
 .container2 {
-     background: #e5c3ff;
-     margin: 0 0 0 26.5625%;
+    background: #e5c3ff;
+    position: relative;
+     display: block;
+     margin: auto;
      min-height: 80%;
-     padding: 70% 0px 0px 0px;
-     position: absolute;
-     top: 0;
      width: 65%;
 }
 
 .form-background {
+
     content: "";
     z-index: 1;
     display: block;
-    position: absolute;
+
     height: 100%;
     top: 0;
     left: 0;
