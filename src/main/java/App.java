@@ -78,9 +78,8 @@ public class App {
 
       if(Student.login(userName, password)){
         request.session().attribute("loginError", 1);
-        response.redirect(request.url());  
+        response.redirect(request.url());
       }
-
       if(errorTypes.size() > 0){
 
       }else{
