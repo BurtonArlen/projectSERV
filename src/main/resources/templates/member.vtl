@@ -1,29 +1,28 @@
 <div class="banner">
 	<header class="clearfix">
 		<div class="clearfix header-background">
-			<h1><span class="epi">epi</span><span class="serve"><em>S</em>ERVE</span><span class="us">us</span></h1>
+			<!-- <nav class="clearfix nav-left">
+
+			</nav> -->
+			<h1><span class="epi">epi</span><span class="serve"><em>S</em>ER<em>V</em>E</span><span class="us">us</span></h1>
 		</div>
 		<nav class="nav-right clearfix">
 			<ul class="clearfix left">
-				<li><a href="/">epiSERVEus</a></li>
-				<li><a href="#">Our Mission</a></li>
+				<li><a href="/signUp">Sign up</a></li>
+				<li><a href="#">Members</a></li>
 			</ul>
 			<ul class="right">
-				<li><span class="glyphicon glyphicon-user"></li>
+				<li><a href="/profile"><span class="glyphicon glyphicon-user"></span></a></li>
 				<div class="dropdown">
 					<li><span class="glyphicon glyphicon-pencil"></span></li>
 						<div class="dropdown-content">
 						    <form id="login" class="form" action='/login' method='post'>
-								#if($loginError == 1)
-									<label class="red">Invalid Credentials</label>
-								#end
 								<div class="form-group">
 									<label for="userName">User Name</label>
 									<input id="userName" name="userName" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 								</div>
 								<div class="form-group">
 									<label for="password">Password</label>
-									<input name="url" value="$url" type="hidden">
 									<input id="password" name="password" class="form-control" type="password" required pattern="^(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
 								</div>
 								<button type="submit" class="login btn btn-info">Login</button>
@@ -33,6 +32,80 @@
 				<li><span class="glyphicon glyphicon-search"></span></li>
 			</ul>
 		</nav>
-
 	</header><!--END OF HEADER -->
 </div><!--end of banner -->
+<div class="wrap">
+	<div id="member-content">
+		<div id="new-member-signUp">
+			<form class="member new-member-signUp" class="form" action='/newMember' method='post'>
+				<div class="form-group">
+					<label for="newMemberName">Name</label>
+					<input id="newMemberName" name="newMemberName" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language1">Language</label>
+					<input id="language1" name="language1" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language2">Language</label>
+					<input id="language2" name="language2" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language3">Language</label>
+					<input id="language3" name="language3" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language4">Language</label>
+					<input id="language4" name="language4" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="newMemberBio">Bio</label>
+					<textarea id="newMemberBio" name="newMemberBio" class="form-control" type="text"></textarea>
+				</div>
+				<button type="submit" class="new-member btn btn-info">Create</button>
+			</form>
+
+		</div>
+		<div id="update-member">
+			<form class="member new-member" class="form" action='/newMember' method='post'>
+				<div class="form-group">
+					<label for="newMemberName">Name</label>
+					<input id="newMemberName" name="newMemberName" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language1">Language</label>
+					<input id="language1" name="language1" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language2">Language</label>
+					<input id="language2" name="language2" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language3">Language</label>
+					<input id="language3" name="language3" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="language4">Language</label>
+					<input id="language4" name="language4" class="form-control" type="text">
+				</div>
+				<div class="form-group">
+					<label for="newMemberBio">Bio</label>
+					<textarea id="newMemberBio" name="newMemberBio" class="form-control" type="text"></textarea>
+				</div>
+				<button type="submit" class="new-member btn btn-info">Create</button>
+			</form>
+
+		</div>
+
+	</div>
+	<div id="member-purple">
+
+	</div>
+	<div class="member-purple-container">
+		<div class="member-purple-content"><p>Update Profile</p></div>
+		<div class="member-purple-content"><p>Create Profile</p></div>
+	</div>
+
+	<div id="member-yellow">		
+	</div>
+</div><!-- END OF WRAP -->
