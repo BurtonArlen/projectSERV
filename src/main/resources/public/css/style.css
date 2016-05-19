@@ -27,6 +27,8 @@ Developer @GA in NYC
      height: 0;
 }
 .red{
+  display: block;
+  margin: auto;
   color: red;
 }
 .clear {
