@@ -29,7 +29,8 @@ public class Student {
     this.password = password;
   }
 
-  public Student(String student_first_name, String student_last_name, String bio, String email, String password, ArrayList<String> skillsArray, ArrayList<String> experienceArray) {
+  public Student(int id, String student_first_name, String student_last_name, String bio, String email, String password, ArrayList<String> skillsArray, ArrayList<String> experienceArray) {
+    this.id = id;
     this.student_first_name = student_first_name;
     this.student_last_name = student_last_name;
     this.bio = bio;
@@ -85,13 +86,36 @@ public class Student {
     }
   }
 
-  public void addSkills(ArrayList<String> newSkillsArray){
+  public void update(String student_first_name, String student_last_name, String bio, String email, ArrayList<String> skillsArray, ArrayList<String> experienceArray){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE students SET student_first_name=:student_first_name, student_last_name=:student_last_name, bio=:bio, email=:email WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("id", this.getId())
+      .addParameter("student_first_name", student_first_name)
+      .addParameter("student_last_name", student_last_name)
+      .addParameter("bio", bio)
+      .addParameter("email", email)
+      .executeUpdate();
+    }
+    this.addSkills(skillsArray, this.getId());
+    this.addExps(experienceArray, this.getId());
+  }
+
+  public void addSkills(ArrayList<String> newSkillsArray, int id){
     try(Connection con = DB.sql2o.open()) {
 
-      for (String newSkill : newSkillsArray) {
-        if (this.getSkills().contains(newSkill)){
-          continue;
-        }
+      for(int skillId : this.getSkillIds()){
+        String skillDelete = "DELETE FROM skills WHERE id=:id";
+        con.createQuery(skillDelete)
+        .addParameter("id", skillId)
+        .executeUpdate();
+      }
+        String skillDeletejoin = "DELETE FROM students_skills WHERE student_id=:id";
+        con.createQuery(skillDeletejoin)
+        .addParameter("id", id)
+        .executeUpdate();
+
+      for (String newSkill : newSkillsArray){
         String skillAdd = "INSERT INTO skills (skill) VALUES (:skill)";
         this.skill_id = (int) con.createQuery(skillAdd , true)
         .addParameter("skill", newSkill)
@@ -100,7 +124,7 @@ public class Student {
 
         String joinstudent_skillsTableAdd = "INSERT INTO students_skills (student_id, skill_id) VALUES (:student_id, :skill_id)";
         con.createQuery(joinstudent_skillsTableAdd)
-        .addParameter("student_id", this.getId())
+        .addParameter("student_id", id)
         .addParameter("skill_id", this.getSkillId())
         .executeUpdate();
       }
@@ -108,13 +132,22 @@ public class Student {
     }
   }
 
-  public void addExps(ArrayList<String> newExpsArray){
+  public void addExps(ArrayList<String> newExpsArray, int id){
     try(Connection con = DB.sql2o.open()) {
 
-      for (String newExp : newExpsArray) {
-        if (this.getExps().contains(newExp)){
-          continue;
-        }
+      for(int expId : this.getExpIds()){
+        String work_expDelete = "DELETE FROM work_exp WHERE id=:id";
+        con.createQuery(work_expDelete)
+        .addParameter("id", expId)
+        .executeUpdate();
+      }
+
+        String work_expDeletejoin = "DELETE FROM students_exps WHERE student_id=:id";
+        con.createQuery(work_expDeletejoin)
+        .addParameter("id", id)
+        .executeUpdate();
+
+      for (String newExp : newExpsArray){
         String expAdd = "INSERT INTO work_exp (exp) VALUES (:exp)";
         this.exp_id = (int) con.createQuery(expAdd , true)
         .addParameter("exp", newExp)
@@ -123,7 +156,7 @@ public class Student {
 
         String joinstudent_expsTableAdd = "INSERT INTO students_exps (student_id, exp_id) VALUES (:student_id, :exp_id)";
         con.createQuery(joinstudent_expsTableAdd)
-        .addParameter("student_id", this.getId())
+        .addParameter("student_id", id)
         .addParameter("exp_id", this.getExpId())
         .executeUpdate();
       }
@@ -285,6 +318,10 @@ public class Student {
 
   public String getStudentEmail(){
     return email;
+  }
+
+  public String getStudentBio(){
+    return bio;
   }
 
   public String getStudentLastName(){

@@ -173,7 +173,6 @@ em {
 }
 
 .dropdown-content {
-      text-align: center;
      display: none;
      position: absolute;
      right: -100px;
@@ -658,8 +657,6 @@ main {
     left: 0;
     right: 0;
     background: rgba(0,0,0,0.15);
-    border: 0.5em solid black;
-
 }
 /******************************************
 /* MEMBER STYLES

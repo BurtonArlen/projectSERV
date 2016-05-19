@@ -45,78 +45,13 @@
 		</nav>
 	</header><!--END OF HEADER -->
 </div><!--end of banner -->
-<div class="wrap">
-	<div id="member-content">
-		<div id="new-member-signUp">
-			<form class="member new-member-signUp" class="form" action='/newMember' method='post'>
-				<div class="form-group">
-					<label for="newMemberName">Name</label>
-					<input id="newMemberName" name="newMemberName" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language1">Language</label>
-					<input id="language1" name="language1" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language2">Language</label>
-					<input id="language2" name="language2" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language3">Language</label>
-					<input id="language3" name="language3" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language4">Language</label>
-					<input id="language4" name="language4" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="newMemberBio">Bio</label>
-					<textarea id="newMemberBio" name="newMemberBio" class="form-control" type="text"></textarea>
-				</div>
-				<button type="submit" class="new-member btn btn-info">Create</button>
-			</form>
-
-		</div>
-		<div id="update-member">
-			<form class="member new-member" class="form" action='/newMember' method='post'>
-				<div class="form-group">
-					<label for="newMemberName">Name</label>
-					<input id="newMemberName" name="newMemberName" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language1">Language</label>
-					<input id="language1" name="language1" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language2">Language</label>
-					<input id="language2" name="language2" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language3">Language</label>
-					<input id="language3" name="language3" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="language4">Language</label>
-					<input id="language4" name="language4" class="form-control" type="text">
-				</div>
-				<div class="form-group">
-					<label for="newMemberBio">Bio</label>
-					<textarea id="newMemberBio" name="newMemberBio" class="form-control" type="text"></textarea>
-				</div>
-				<button type="submit" class="new-member btn btn-info">Create</button>
-			</form>
-
-		</div>
-
+<div class="container2">
+<h1>Welcome $studentlog.getStudentFirstName() $studentlog.getStudentLastName()</h1> <hr>
+		<nav>
+			<ul>
+				<li><a href="/edit/$studentlog.getId()"><p>Update Profile</p></a></li>
+				<li><a href="/directory" ><p>Search Directory</p></a></li>
+				<li><a href="/profile/$studentlog.getId()"><p>View Profile</p></a></li>
+			</ul>
+		</nav>
 	</div>
-	<div id="member-purple">
-
-	</div>
-	<div class="member-purple-container">
-		<div class="member-purple-content"><p>Update Profile</p></div>
-		<div class="member-purple-content"><p>Create Profile</p></div>
-	</div>
-
-	<div id="member-yellow">
-	</div>
-</div><!-- END OF WRAP -->
