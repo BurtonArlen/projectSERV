@@ -13,7 +13,6 @@ public class App {
     //  setPort(80);
 
     staticFileLocation("/public");
-
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("url", request.url());
@@ -42,27 +41,18 @@ public class App {
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
-    get("/directory/test", (request, response) -> {
+    get("/directory", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      if(request.session().attribute("students") == null){
+        request.session().attribute("students", Student.allStudents());
+      }
+      model.put("students", request.session().attribute("students"));
+      request.session().attribute("students", Student.allStudents());
+      model.put("url", request.url());
+      model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/directory.vtl");
-      return new ModelAndView(model, "templates/layout.vtl");
-    }, new VelocityTemplateEngine());
-
-    get("/newMember/test", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/newMember.vtl");
-      return new ModelAndView(model, "templates/layout.vtl");
-    }, new VelocityTemplateEngine());
-
-    get("/profile/test", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/profile.vtl");
-      return new ModelAndView(model, "templates/layout.vtl");
-    }, new VelocityTemplateEngine());
-
-    get("/member/test", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/member.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
@@ -106,6 +96,7 @@ public class App {
 
     post("/login", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+
       String userName = request.queryParams("userName");
       String password = request.queryParams("password");
 
@@ -129,16 +120,37 @@ public class App {
       return null;
     });
 
-    get("/directory", (request, response) -> {
+
+    post("/search", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("students", Student.allStudents());
-      model.put("url", request.url());
-      model.put("loginError", request.session().attribute("loginError"));
-      model.put("studentlog", request.session().attribute("studentlog"));
-      request.session().attribute("loginError", 0);
-      model.put("template", "templates/directory.vtl");
-      return new ModelAndView(model, "templates/layout.vtl");
-    }, new VelocityTemplateEngine());
+
+      String search = request.queryParams("search");
+      int filter = Integer.parseInt(request.queryParams("filter"));
+      ArrayList<Student> students = new ArrayList<Student>();
+      switch(filter){
+        case 1:
+          if(Student.findStudentByLastName(search) != null){
+            students.add(Student.findStudentByLastName(search));
+          }
+          break;
+        case 2:
+          if(Student.findStudentByEmail(search) != null){
+            students.add(Student.findStudentByEmail(search));
+          }
+          break;
+        case 3:
+          for(Student skill : Student.findStudentsBySkill(search)){
+            students.add(skill);
+          }
+          break;
+        default:
+          break;
+      }
+      request.session().attribute("students", students);
+      response.redirect("/directory");
+      return null;
+    });
+
 
     // post("/upload", (req, res) -> {
     //   final File upload = new File("upload");
@@ -161,6 +173,7 @@ public class App {
     //   halt(200);
     //   return null;
     // });
+
 
   }
 }

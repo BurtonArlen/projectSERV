@@ -1,15 +1,19 @@
+
 <div class="banner">
 	<header class="clearfix">
 		<div class="clearfix header-background">
+			<!-- <nav class="clearfix nav-left">
+
+			</nav> -->
 			<h1><span class="epi">epi</span><span class="serve"><em>S</em>ERVE</span><span class="us">us</span></h1>
 		</div>
 		<nav class="nav-right clearfix">
 			<ul class="clearfix left">
-				<li><a href="/">epiSERVEus</a></li>
+				<li><a href="/signUp">Sign Up</a></li>
 				<li><a href="#">Our Mission</a></li>
 			</ul>
 			<ul class="right">
-				<li><span class="glyphicon glyphicon-user"></li>
+				<li><a href="/profile/test"><span class="glyphicon glyphicon-user"></span></a></li>
 				<div class="dropdown">
 					<li><span class="glyphicon glyphicon-pencil"></span></li>
 						<div class="dropdown-content">
@@ -37,16 +41,33 @@
 							#end
 						</div>
 				</div>
-				<li><span class="glyphicon glyphicon-search"></span></li>
+				<li><a href="/directory"><span class="glyphicon glyphicon-search"></span></a></li>
 			</ul>
 		</nav>
-
 	</header><!--END OF HEADER -->
 </div><!--end of banner -->
-<div class="studentDirectory">
 
 	<div class="container2">
+		<form class="form-inline" action="/search" method="post">
+		<div class="form-group">
+			<label for="search">Search</label>
+			<input id="search" name="search" class="form-control" type="text" required>
+		</div>
+		<div class="form-group">
+			<label for="filter">Search</label>
+			<select name="filter" class="form-control" required>
+				<option value="0" disabled selected>--Select A Filter--</option>
+				<option value="1">Student Last Name</option>
+				<option value="2">Student Email</option>
+				<option value="3">Student Skills</option>
+			</select>
+		</div>
+		<button type="submit" class="login btn btn-info">Search</button>
+		</form>
 	<ul>
+		#if($students.size() == 0)
+			<h2 class="red">No Students Found</h2>
+		#end
 	  #foreach ($student in $students)
 	  <a href="/profile/$student.getId()"><li><span class="studentListing">$student.getStudentFirstName() $student.getStudentLastName()</span></a>
 			<ul><li>$student.getStudentEmail()</li>
@@ -55,5 +76,3 @@
 		#end
 	<ul>
 	</div>
-
-</div>
