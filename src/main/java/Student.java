@@ -157,6 +157,15 @@ public class Student {
     }
   }
 
+  public static Student findStudentByLastName(String lastname){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM students WHERE student_last_name=:lastname ORDER BY student_last_name ASC";
+      return con.createQuery(sql)
+      .addParameter("lastname", lastname)
+      .executeAndFetchFirst(Student.class);
+    }
+  }
+
   public static boolean checkEmailAvailable(String email){
     if(Student.findStudentByEmail(email) == null){
       return true;
@@ -272,6 +281,10 @@ public class Student {
 
   public String getStudentFirstName(){
     return student_first_name;
+  }
+
+  public String getStudentEmail(){
+    return email;
   }
 
   public String getStudentLastName(){

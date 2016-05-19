@@ -1,25 +1,35 @@
+
 <div class="banner">
 	<header class="clearfix">
 		<div class="clearfix header-background">
+			<!-- <nav class="clearfix nav-left">
+
+			</nav> -->
 			<h1><span class="epi">epi</span><span class="serve"><em>S</em>ERVE</span><span class="us">us</span></h1>
 		</div>
 		<nav class="nav-right clearfix">
 			<ul class="clearfix left">
-				<li><a href="/">epiSERVEus</a></li>
+				<li><a href="/signUp">Sign Up</a></li>
 				<li><a href="#">Our Mission</a></li>
 			</ul>
 			<ul class="right">
-				<li><span class="glyphicon glyphicon-user"></li>
+				<li><a href="/profile/test"><span class="glyphicon glyphicon-user"></span></a></li>
 				<div class="dropdown">
 					<li><span class="glyphicon glyphicon-pencil"></span></li>
 						<div class="dropdown-content">
-						    <form id="login" class="form" action='/login' method='post'>
-								#if($loginError == 1)
-									<label class="red">Invalid Credentials</label>
-								#end
+							#if($studentlog)
+								<label class="red">$studentlog.getStudentFirstName() $studentlog.getStudentLastName()</label>
+								<form class="form" action="/signout" method="post">
+									<button type="submit" class="login btn btn-info">Sign Out</button>
+								</form>
+							#else
+								<form class="form" action="/login" method="post">
+									#if($loginError == 1)
+										<label class="red">Invalid Credentials</label>
+									#end
 								<div class="form-group">
 									<label for="userName">User Name</label>
-									<input id="userName" name="userName" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+									<input id="userName" name="userName" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 								</div>
 								<div class="form-group">
 									<label for="password">Password</label>
@@ -27,16 +37,16 @@
 									<input id="password" name="password" class="form-control" type="password" required pattern="^(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
 								</div>
 								<button type="submit" class="login btn btn-info">Login</button>
-							</form>
+								</form>
+							#end
 						</div>
 				</div>
-				<li><span class="glyphicon glyphicon-search"></span></li>
+				<li><a href="/directory"><span class="glyphicon glyphicon-search"></span></a></li>
 			</ul>
 		</nav>
-
 	</header><!--END OF HEADER -->
 </div><!--end of banner -->
-<div class="wrap">
+
 	<div class="container2">
 		<div class="form-background">
 			<form id="signup" class="form-group" action='/signUp' method='post'>
@@ -69,4 +79,3 @@
 				<button type="submit" class="signup btn btn-info">Sign Up</button>
 			</form>
 		</div>
-	</div>
