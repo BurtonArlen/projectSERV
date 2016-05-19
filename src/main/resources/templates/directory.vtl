@@ -44,14 +44,15 @@
 
 <div class="studentDirectory">
 
-	<div>
+	<div class="container2">
+	<ul>
 	  #foreach ($student in $students)
-	  <a href="/student/$student.getId()/profile"><span class="studentListing">$student.getName()</span></a>
+	  <a href="/profile/$student.getId()"><li><span class="studentListing">$student.getStudentFirstName() $student.getStudentLastName()</span></a>
+			<ul><li>$student.getStudentEmail()</li>
+			</ul></li>
+			<hr>
 		#end
+	<ul>
 	</div>
 
-
-	<div class="footer clear">
-	  <div class="footer-content"><a href="/">HOME</a></div>
-	</div>
 </div>
