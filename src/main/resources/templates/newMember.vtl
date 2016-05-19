@@ -5,15 +5,19 @@
 			<!-- <nav class="clearfix nav-left">
 
 			</nav> -->
-			<h1><span class="epi">epi</span><span class="serve"><em>S</em>ERVE</span><span class="us">us</span></h1>
+			<a href="/"><h1><span class="epi">epi</span><span class="serve"><em>S</em>ERVE</span><span class="us">us</span></h1></a>
 		</div>
 		<nav class="nav-right clearfix">
 			<ul class="clearfix left">
 				<li><a href="/signUp">Sign Up</a></li>
-				<li><a href="#">Our Mission</a></li>
+				#if($studentlog)
+  <li><a href="/member">$studentlog.getStudentFirstName() $studentlog.getStudentLastName()</a></li>
+#end
 			</ul>
 			<ul class="right">
-				<li><a href="/profile/test"><span class="glyphicon glyphicon-user"></span></a></li>
+			#if($studentlog)
+			<li><a href="/profile/$studentlog.getId()"><span class="glyphicon glyphicon-user"></span></a></li>
+			#end
 				<div class="dropdown">
 					<li><span class="glyphicon glyphicon-pencil"></span></li>
 						<div class="dropdown-content">

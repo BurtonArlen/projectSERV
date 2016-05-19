@@ -67,9 +67,22 @@ public class App {
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
+    get("/noprofile", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("url", request.url());
+      model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
+      request.session().attribute("loginError", 0);
+      model.put("template", "templates/noprofile.vtl");
+      return new ModelAndView(model, "templates/layout.vtl");
+    }, new VelocityTemplateEngine());
+
 
     get("/profile/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      if(Student.findStudentById(Integer.parseInt(request.params("id"))) == null){
+        response.redirect("/noprofile");
+      }
       model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
       model.put("student", Student.findStudentById(Integer.parseInt(request.params("id"))));
@@ -147,13 +160,18 @@ public class App {
     post("/edit/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
+      if(Student.findStudentById(Integer.parseInt(request.params("id"))) == null){
+        response.redirect("/noprofile");
+      }
+
       int id = Integer.parseInt(request.params("id"));
       String newUserFirstName = request.queryParams("newUserFirstName");
       String newUserLastName = request.queryParams("newUserLastName");
       String newUserEmail = request.queryParams("newUserEmail");
       String bio = request.queryParams("bio");
-      String skills = request.queryParams("skills");
-      String work_exp = request.queryParams("work_exp");
+      String skills = request.queryParams("skills").toLowerCase();
+      String work_exp = request.queryParams("work_exp").toLowerCase();
+
       ArrayList<String> arrayOfSkills = new ArrayList<String>(Arrays.asList(skills.split("\\n")));
       ArrayList<String> arrayOfExps = new ArrayList<String>(Arrays.asList(work_exp.split("\\n")));
       Student student = Student.findStudentById(id);
@@ -181,7 +199,7 @@ public class App {
           }
           break;
         case 3:
-          for(Student skill : Student.findStudentsBySkill(search)){
+          for(Student skill : Student.findStudentsBySkill((search+"\r").toLowerCase())){
             students.add(skill);
           }
           break;

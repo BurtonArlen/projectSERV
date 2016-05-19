@@ -5,15 +5,19 @@
 			<!-- <nav class="clearfix nav-left">
 
 			</nav> -->
-			<h1><span class="epi">epi</span><span class="serve"><em>S</em>ERVE</span><span class="us">us</span></h1>
+			<a href="/"><h1><span class="epi">epi</span><span class="serve"><em>S</em>ERVE</span><span class="us">us</span></h1></a>
 		</div>
 		<nav class="nav-right clearfix">
 			<ul class="clearfix left">
 				<li><a href="/signUp">Sign Up</a></li>
-				<li><a href="#">Our Mission</a></li>
+				#if($studentlog)
+				  <li><a href="/member">$studentlog.getStudentFirstName() $studentlog.getStudentLastName()</a></li>
+				#end
 			</ul>
 			<ul class="right">
-				<li><a href="/profile/test"><span class="glyphicon glyphicon-user"></span></a></li>
+				#if($studentlog)
+				<li><a href="/profile/$studentlog.getId()"><span class="glyphicon glyphicon-user"></span></a></li>
+				#end
 				<div class="dropdown">
 					<li><span class="glyphicon glyphicon-pencil"></span></li>
 						<div class="dropdown-content">
@@ -49,6 +53,7 @@
 
 <div class="container2">
 	<div class="form-background">
+		#if($student.getId() == $studentlog.getId())
 		<form id="signup" class="form-group" action='/edit/$student.getId()' method='post'>
 			<div class="form-group">
 				<label for="newUserFirstName">First Name</label>
@@ -69,20 +74,23 @@
 			<div class="form-group">
 				<label for="bio">Bio</label>
 
-				<textarea id="bio" name="bio" onkeyup="auto_grow(this)" placeholder="Enter Bio" class="form-control" id="textarea1" type="text">#if($student.getStudentBio() != "")$student.getStudentBio() #end</textarea>
+				<textarea id="bio" name="bio" onkeyup="auto_grow(this)" placeholder="Enter Bio" class="form-control" id="textarea1" type="text">#if($student.getStudentBio())$student.getStudentBio() #end</textarea>
 			</div>
 			<div class="form-group">
 				<label for="skills">Skills</label>
 				#set($a = "")
-				<textarea id="skills" name="skills" onkeyup="auto_grow(this)" placeholder="Enter each Skill on a separate line" class="form-control" id="textarea2" type="text">#foreach($skill in $student.getSkills())$skill&#10#end</textarea>
+				<textarea id="skills" name="skills" onkeyup="auto_grow(this)" placeholder="Enter each Skill on a separate line" class="form-control" id="textarea2" type="text">#if($student.getSkills().size() >0)#foreach($skill in $student.getSkills())$skill&#10#end#end</textarea>
 			</div>
 			<div class="form-group">
 				<label for="work_exp">Work Experience</label>
 				#set($b = "")
-				<textarea id="work_exp" name="work_exp" onkeyup="auto_grow(this)" placeholder="Enter each Work Experience on a separate line" class="form-control" id="textarea2" type="text"> #foreach($exp in $student.getExps())$exp&#10#end</textarea>
+				<textarea id="work_exp" name="work_exp" onkeyup="auto_grow(this)" placeholder="Enter each Work Experience on a separate line" class="form-control" id="textarea2" type="text">#if($student.getExps().size() > 0)#foreach($exp in $student.getExps())$exp&#10#end#end</textarea>
 			</div>
 
-			<button type="submit" class="signup btn btn-info">Sign Up</button>
+			<button type="submit" class="signup btn btn-info">Update</button>
 		</form>
+		#else
+			<h1>Permission Denied</h1>
+		#end
 	</div>
 </div>

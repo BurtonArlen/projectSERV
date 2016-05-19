@@ -566,7 +566,7 @@ section {
     padding: 150px 0 30px 0;
     position: relative;
     z-index: -3;
-    bottom: 600px;
+    bottom: 200px;
     right: 50px;
     width: 1000px;
     -webkit-transform: rotate(-90deg);
@@ -583,9 +583,9 @@ section {
 
 #personal-yellow {
 
-    position: relative;
+    position: absolute;
     height: 130px;
-    bottom: 1400px;
+    bottom: 70%;
     width: 1400px;
     background:#fcf910;
     left: 150px;
@@ -596,7 +596,7 @@ section {
     position: relative;
     width: 20%;
     left: 150px;
-    bottom: 800px;
+    bottom: 300px;
 
 
 }
@@ -614,7 +614,7 @@ section {
 
 main {
     position: relative;
-    top: -30px;
+    top: 0px;
     left: 650px;
     /*height: 400px;*/
     width: 600px;
