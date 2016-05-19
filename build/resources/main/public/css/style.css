@@ -18,6 +18,9 @@ Developer @GA in NYC
 }
 
 /* Clear fix hack */
+.placeholder{
+  display: none;
+}
 .clearfix:after {
      content: ".";
      display: block;
@@ -242,6 +245,9 @@ header {
 h2 {
     text-align: center;
     font-family: codelight;
+}
+h3{
+  font-family: codelight;
 }
 
 .clearfix nav {
