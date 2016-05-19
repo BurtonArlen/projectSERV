@@ -46,3 +46,43 @@
 		</nav>
 	</header><!--END OF HEADER -->
 </div><!--end of banner -->
+
+<div class="container2">
+	<div class="form-background">
+		<form id="signup" class="form-group" action='/edit/$student.getId()' method='post'>
+			<div class="form-group">
+				<label for="newUserFirstName">First Name</label>
+				<input id="newUserFirstName" name="newUserFirstName" #if($student.getStudentFirstName() != "")value="$student.getStudentFirstName()"#end class="form-control" type="text">
+			</div>
+			<div class="form-group">
+				<label for="newUserLastName">Last Name</label>
+				<input id="newUserLastName" name="newUserLastName" #if($student.getStudentLastName() != "")value="$student.getStudentLastName()"#end class="form-control" type="text">
+			</div>
+			<div class="form-group">
+				<label for="newUserEmail">Email Address</label>
+				#if($errorsArray.contains(1))
+					<br><label for="newUserEmail" class="red">Email Already Exists</label>
+				#end
+				<input id="newUserEmail" name="newUserEmail" #if($student.getStudentEmail() != "")value="$student.getStudentEmail()"#end class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+				<input id="newPassword" name="newPassword" class="form-control" type="hidden" pattern="^(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+			</div>
+			<div class="form-group">
+				<label for="bio">Bio</label>
+
+				<textarea id="bio" name="bio" onkeyup="auto_grow(this)" placeholder="Enter Bio" class="form-control" id="textarea1" type="text">#if($student.getStudentBio() != "")$student.getStudentBio() #end</textarea>
+			</div>
+			<div class="form-group">
+				<label for="skills">Skills</label>
+				#set($a = "")
+				<textarea id="skills" name="skills" onkeyup="auto_grow(this)" placeholder="Enter each Skill on a separate line" class="form-control" id="textarea2" type="text">#foreach($skill in $student.getSkills())$skill&#10#end</textarea>
+			</div>
+			<div class="form-group">
+				<label for="work_exp">Work Experience</label>
+				#set($b = "")
+				<textarea id="work_exp" name="work_exp" onkeyup="auto_grow(this)" placeholder="Enter each Work Experience on a separate line" class="form-control" id="textarea2" type="text"> #foreach($exp in $student.getExps())$exp&#10#end</textarea>
+			</div>
+
+			<button type="submit" class="signup btn btn-info">Sign Up</button>
+		</form>
+	</div>
+</div>

@@ -56,13 +56,37 @@ public class App {
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
-    get("/profile/:id", (request, response) -> {
+
+    get("/member", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
       model.put("studentlog", request.session().attribute("studentlog"));
       request.session().attribute("loginError", 0);
+      model.put("template", "templates/member.vtl");
+      return new ModelAndView(model, "templates/layout.vtl");
+    }, new VelocityTemplateEngine());
+
+
+    get("/profile/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("url", request.url());
+      model.put("loginError", request.session().attribute("loginError"));
+      model.put("student", Student.findStudentById(Integer.parseInt(request.params("id"))));
+      model.put("studentlog", request.session().attribute("studentlog"));
+      request.session().attribute("loginError", 0);
       model.put("template", "templates/profile.vtl");
+      return new ModelAndView(model, "templates/layout.vtl");
+    }, new VelocityTemplateEngine());
+
+    get("/edit/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("student", Student.findStudentById(Integer.parseInt(request.params("id"))));
+      model.put("url", request.url());
+      model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
+      request.session().attribute("loginError", 0);
+      model.put("template", "templates/editProfile.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
@@ -90,7 +114,7 @@ public class App {
       Student newStudent = new Student(newUserFirstName, newUserLastName, newUserEmail, newPassword);
       newStudent.save();
       request.session().attribute("studentlog", newStudent);
-      response.redirect("/profile/" + Integer.toString(newStudent.getId()));
+      response.redirect("/member");
       }
       return null;
     });
@@ -109,7 +133,7 @@ public class App {
         request.session().attribute("loginError", 0);
         Student student = Student.login(userName, password);
         request.session().attribute("studentlog", student);
-        response.redirect("/profile/" + Integer.toString(student.getId()));
+        response.redirect("/member");
       }
       return null;
     });
@@ -120,6 +144,27 @@ public class App {
       response.redirect("/");
       return null;
     });
+
+
+    post("/edit/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+
+      int id = Integer.parseInt(request.params("id"));
+      String newUserFirstName = request.queryParams("newUserFirstName");
+      String newUserLastName = request.queryParams("newUserLastName");
+      String newUserEmail = request.queryParams("newUserEmail");
+      String bio = request.queryParams("bio");
+      String skills = request.queryParams("skills");
+      String work_exp = request.queryParams("work_exp");
+      ArrayList<String> arrayOfSkills = new ArrayList<String>(Arrays.asList(skills.split("\\n")));
+      ArrayList<String> arrayOfExps = new ArrayList<String>(Arrays.asList(work_exp.split("\\n")));
+      Student student = Student.findStudentById(id);
+      student.update(newUserFirstName, newUserLastName, bio, newUserEmail, arrayOfSkills, arrayOfExps);
+
+      response.redirect("/profile/" + Integer.toString(id));
+      return null;
+    });
+
 
     post("/search", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();

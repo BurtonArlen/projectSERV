@@ -658,8 +658,21 @@ main {
     right: 0;
     background: rgba(0,0,0,0.15);
 }
-
-
+/******************************************
+/* MEMBER STYLES
+/*******************************************/
+.container2 h1{
+  display: block;
+  margin: auto;
+  text-align: center;
+  float: inherit;
+}
+.container2 nav ul{
+  width: inherit;
+}
+#skills, #work_exp{
+  height: 7em;
+}
 
 /******************************************
 /* MEDIA QUERIES
