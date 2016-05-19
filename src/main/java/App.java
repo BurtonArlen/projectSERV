@@ -73,7 +73,6 @@ public class App {
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
-
     post("/signUp", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       ArrayList<Integer> errorTypes = new ArrayList<Integer>();
