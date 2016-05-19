@@ -274,6 +274,10 @@ public class Student {
     return student_first_name;
   }
 
+  public String getStudentEmail(){
+    return email;
+  }
+
   public String getStudentLastName(){
     return student_last_name;
   }

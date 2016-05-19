@@ -129,6 +129,17 @@ public class App {
       return null;
     });
 
+    get("/directory", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("students", Student.allStudents());
+      model.put("url", request.url());
+      model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
+      request.session().attribute("loginError", 0);
+      model.put("template", "templates/directory.vtl");
+      return new ModelAndView(model, "templates/layout.vtl");
+    }, new VelocityTemplateEngine());
+
     // post("/upload", (req, res) -> {
     //   final File upload = new File("upload");
     //   if (!upload.exists() && !upload.mkdirs()) {
