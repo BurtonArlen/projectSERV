@@ -103,6 +103,13 @@ public class App {
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
+    get("/signout", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      request.session().attribute("studentlog", null);
+      response.redirect("/");
+      return null;
+    });
+
     post("/signUp", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       ArrayList<Integer> errorTypes = new ArrayList<Integer>();
@@ -150,12 +157,7 @@ public class App {
       return null;
     });
 
-    post("/signout", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      request.session().attribute("studentlog", null);
-      response.redirect("/");
-      return null;
-    });
+
 
     post("/edit/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();

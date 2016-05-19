@@ -9,9 +9,10 @@
 		</div>
 		<nav class="nav-right clearfix">
 			<ul class="clearfix left">
-				<li><a href="/signUp">Sign Up</a></li>
 				#if($studentlog)
-				  <li><a href="/member">$studentlog.getStudentFirstName() $studentlog.getStudentLastName()</a></li>
+					<li><a href="/member">$studentlog.getStudentFirstName() $studentlog.getStudentLastName()</a></li>
+				#else
+					<li><a href="/signUp">Sign Up</a></li>
 				#end
 			</ul>
 			<ul class="right">
@@ -23,7 +24,7 @@
 						<div class="dropdown-content">
 							#if($studentlog)
 								<label class="red">$studentlog.getStudentFirstName() $studentlog.getStudentLastName()</label>
-								<form class="form" action="/signout" method="post">
+								<form class="form" action="/signout" method="get">
 									<button type="submit" class="login btn btn-info">Sign Out</button>
 								</form>
 							#else
@@ -59,6 +60,7 @@
 				<li><a href="/edit/$studentlog.getId()"><p>Update Profile</p></a></li>
 				<li><a href="/directory" ><p>Search Directory</p></a></li>
 				<li><a href="/profile/$studentlog.getId()"><p>View Profile</p></a></li>
+				<li><a href="/signout"><p>Sign Out</p></a></li>
 			</ul>
 		</nav>
 	#end

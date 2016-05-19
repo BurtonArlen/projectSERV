@@ -23,7 +23,7 @@
 						<div class="dropdown-content">
 							#if($studentlog)
 								<label class="red">$studentlog.getStudentFirstName() $studentlog.getStudentLastName()</label>
-								<form class="form" action="/signout" method="post">
+								<form class="form" action="/signout" method="get">
 									<button type="submit" class="login btn btn-info">Sign Out</button>
 								</form>
 							#else
