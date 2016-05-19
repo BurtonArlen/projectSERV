@@ -27,6 +27,8 @@ Developer @GA in NYC
      height: 0;
 }
 .red{
+  display: block;
+  margin: auto;
   color: red;
 }
 .clear {
@@ -167,6 +169,7 @@ h1 {
 }
 
 .dropdown-content {
+      text-align: center;
      display: none;
      position: absolute;
      right: -100px;
@@ -592,6 +595,7 @@ main {
     height: 400px;
     width: 600px;
     border: 0.5em solid black;
+
 }
 
 

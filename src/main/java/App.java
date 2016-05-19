@@ -1,6 +1,8 @@
 import java.util.*;
-import java.util.Map;
-import java.util.HashMap;
+import java.io.*;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.FileItem;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
@@ -16,6 +18,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
       request.session().attribute("loginError", 0);
       model.put("template", "templates/home.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
@@ -33,6 +36,7 @@ public class App {
       request.session().attribute("errorsArray", errorsArray);
       model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
       request.session().attribute("loginError", 0);
       model.put("template", "templates/signUp.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
@@ -55,6 +59,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("url", request.url());
       model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
       request.session().attribute("loginError", 0);
       model.put("template", "templates/profile.vtl");
       return new ModelAndView(model, "templates/layout.vtl");
@@ -83,7 +88,7 @@ public class App {
       }else{
       Student newStudent = new Student(newUserFirstName, newUserLastName, newUserEmail, newPassword);
       newStudent.save();
-
+      request.session().attribute("studentlog", newStudent);
       response.redirect("/profile/" + Integer.toString(newStudent.getId()));
       }
       return null;
@@ -101,10 +106,40 @@ public class App {
       else{
         request.session().attribute("loginError", 0);
         Student student = Student.login(userName, password);
+        request.session().attribute("studentlog", student);
         response.redirect("/profile/" + Integer.toString(student.getId()));
       }
       return null;
     });
+
+    post("/signout", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      request.session().attribute("studentlog", null);
+      response.redirect("/");
+      return null;
+    });
+
+    // post("/upload", (req, res) -> {
+    //   final File upload = new File("upload");
+    //   if (!upload.exists() && !upload.mkdirs()) {
+    //     throw new RuntimeException("Failed to create directory " + upload.getAbsolutePath());
+    //   }
+    //
+    //   // apache commons-fileupload to handle file upload
+    //   DiskFileItemFactory factory = new DiskFileItemFactory();
+    //   factory.setRepository(upload);
+    //   ServletFileUpload fileUpload = new ServletFileUpload(factory);
+    //   List<FileItem> items = fileUpload.parseRequest(req.raw());
+    //
+    //   // image is the field name that we want to save
+    //   FileItem item = items.stream()
+    //   .filter(e -> "image".equals(e.getFieldName()))
+    //   .findFirst().get();
+    //   String fileName = item.getName();
+    //   item.write(new File("/public/images/users", fileName));
+    //   halt(200);
+    //   return null;
+    // });
 
 
   }
