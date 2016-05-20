@@ -50,17 +50,7 @@
 	</header><!--END OF HEADER -->
 </div><!--end of banner -->
 <div class="container2">
-	#if(!$studentlog)
+		<h1>No Profile Found</h1>
 		<a href="/signUp"><h2>Sign Up</h2></a>
-	#else
-<h1>Welcome $studentlog.getStudentFirstName() $studentlog.getStudentLastName()</h1> <hr>
-		<nav>
-			<ul>
-				<li><a href="/edit/$studentlog.getId()"><p>Update Profile</p></a></li>
-				<li><a href="/directory" ><p>Search Directory</p></a></li>
-				<li><a href="/profile/$studentlog.getId()"><p>View Profile</p></a></li>
-				<li><a href="/signout"><p>Sign Out</p></a></li>
-			</ul>
-		</nav>
-	#end
+
 	</div>
