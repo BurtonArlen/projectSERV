@@ -77,6 +77,16 @@ public class App {
       return new ModelAndView(model, "templates/layout.vtl");
     }, new VelocityTemplateEngine());
 
+    get("/errorpage", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("url", request.url());
+      model.put("loginError", request.session().attribute("loginError"));
+      model.put("studentlog", request.session().attribute("studentlog"));
+      request.session().attribute("loginError", 0);
+      model.put("template", "templates/errorpage.vtl");
+      return new ModelAndView(model, "templates/layout.vtl");
+    }, new VelocityTemplateEngine());
+
 
     get("/profile/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -215,6 +225,23 @@ public class App {
       request.session().attribute("students", students);
       response.redirect("/directory");
       return null;
+    });
+
+    get("/*", (req, res) -> {
+      ArrayList<String> arrayOfValidExt = new ArrayList<String>();
+        arrayOfValidExt.add("css");
+        arrayOfValidExt.add("js");
+        arrayOfValidExt.add("png");
+        arrayOfValidExt.add("jpg");
+        arrayOfValidExt.add("jpeg");
+        arrayOfValidExt.add("ttf");
+        arrayOfValidExt.add("otf");
+        if(!arrayOfValidExt.contains(req.pathInfo().substring(req.pathInfo().lastIndexOf(".")+1))){
+            System.out.println(req.pathInfo());
+            res.status(404);
+            res.redirect("/errorpage");
+        }
+        return null;
     });
 
 
