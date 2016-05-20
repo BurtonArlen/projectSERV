@@ -52,12 +52,25 @@ Developer @GA in NYC
 /*******************************************/
 
 body {
-     /*color: #000;*/
+     
      font-size: 12px;
      line-height: 1.4;
      font-family: Helvetica, Arial, sans-serif;
      margin:0px;
 }
+
+/*#theBackground {
+    position: fixed;
+    top: 0;
+    z-index: -4;
+    min-height: 100%;
+    min-width: 100%;
+    background: url(../images/glass.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}*/
 
 .main-content {
      min-width: 100%; 
@@ -96,6 +109,10 @@ svg{
     font-family: nova;
     src: url(../fonts/NOVABOLD.otf);
 }
+@font-face {
+    font-family: future;
+    src: url(../fonts/FUTRFW.TTF);
+}
 
 @font-face {
     font-family: viafont;
@@ -125,37 +142,20 @@ svg{
     font-family: strong;
     src: url(../fonts/StrongGlasgow.ttf);
 }
-.epi, .us {
-     color:darkgray;
-     font-family: ethon;
-     text-transform: lowercase;
+@font-face {
+    font-family: dolce;
+    src: url(../fonts/DolceVita.ttf);
 }
 
-em {
-    color: white;
-    /*font-family: strong;*/
-    font-size: 70px;
-    padding: 0;
-}
-
-.serve {
-     color:white;
-     font-size: 50px;
-     font-family: ethon;
-}
-
-#logo {
-/*     
-     height: 80px;
-     display: block;
-     margin:auto;*/
-    /* top: 10;
-     left: 0;*/
-}
 
 .glyphicon {
      color: black;
      font-size: 20px;
+}
+
+.header-background h1 {
+    font-family: future;
+    color: white;
 }
 
 /******************************************
@@ -213,18 +213,19 @@ label {
 header {
   width: 100%;
   margin: auto;
+  /*background: url(../images/greyModern.jpeg) no-repeat center center fixed; */
   
 }
 
 .header-background {
-    background-color: #212647;
-    background-image:
-    linear-gradient(
-      to right, 
-      #212647, white
-    );
-    width: 70%;
+    background-color: rgba(0,0,0,.5);
+    /*width: 70%;*/
 
+}
+.header-background-2 {
+    background-color: black;
+    width: 70%;
+    height: 138px;
 }
 
 .header-background h1 {
@@ -298,7 +299,7 @@ nav ul li {
 nav ul li a {
      color: white;
      text-decoration: none;
-     font-family: aliens;
+     font-family: dolce;
      font-size: 150%;
 
 }
@@ -318,15 +319,24 @@ li:hover {
 }
 
 /******************************************
-/* GALLERY TOP
+/* GALLERY SIDE
 /*******************************************/
+
+.gallery-side {
+     clear: both;
+     background-color: transparent;
+     position: absolute;
+     right: -200px;
+     top: 100px;
+     
+}
 
 .social {
      list-style-type: none;
      padding: 0;
      display: flex;
      flex-wrap: wrap;
-     flex-direction: row;
+     flex-direction: column;
      justify-content: space-between;    
 }
 
@@ -334,8 +344,9 @@ li:hover {
      text-align: center;
      color: white;
      margin-right: auto;
-     display: inline-block;
+     display: block;
      flex-grow: 1;
+     padding: 2%;
      font-size: 100%;
 }
 
@@ -346,103 +357,110 @@ li:hover {
 
 .wrap {
      max-width: 1280px;
-     margin: 0 auto;
+     margin: 5% auto 0;
      position: relative;
      z-index: -3;
   }
 
   p {
-     font-family: aliens;
+     
      font-size: 200%;
   }
 
-section {
-     width: 50%;
-     height:50px;
-     float: center;
-     margin:auto;
-     display: block;
-     color: white;
-     font-family: nova;
-}
-
-.gallery-top {
-     clear: both;
-     background-color: transparent;
-     position: relative;
-     margin-bottom: 2%;
-}
-
 .gallery {
     margin:auto;
-    margin-bottom:2%;
     background-color: black;
-   /* background-image:
-        linear-gradient(
-          to right, 
-          black, transparent
-        );*/
     position: relative;
     z-index: -2;
+}
+
+.gallery2 {
+    margin:auto;
+    margin-bottom:1%;
+    width: 80%;
+    background-color: black;
+    position: relative;
+    z-index: -2;
+}
+
+.features2 {
+    height: 50px;
 }
 
 .features {
     margin:2%;
     position: relative;
+    background-color: white;
     z-index: -2;
 }
 
-.feature-left, .feature-right {
+.feature-left, .feature-right  {
     position: relative;
     float: left;
     height:300px;
     width: 50%;
 }
 
-.feature-right img {
-     height: 300px;
-     width: 450px;
-     border-left: 1em #cecfca;
-     position: relative;
-     bottom:70%;
-     left: 15%;
-     z-index: -1;
-}
-
 .feature-left img {
-  height: 300px;
-  width: 600px;
-  opacity: 0.8;
-  position: relative;
-  z-index: -1;
+    height: 300px;
+    width: 600px;
+    opacity: 0.8;
+    position: relative;
+    z-index: -1;
 }
 
-.feature-right.footer-content p {
+.feature-content{
+    
+    margin-left: 80px;
+    background-color: black;  
+    width: 450px;
+}
+
+.feature-content p {
+    
+    font-family: dolce;  
+    display: block;
+    margin: auto;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    /*margin: 10%;*/
+
     
 }
 
-.feature-right.footer-content {
-     width: 300px;
-     background-color: rgba(0,0,0,.4);    
+.feature-right ul {
+    float: center;
+    padding-top: 25%;
+    padding-left: 5%;
+    margin: auto;
+    display: inline-block;
+    width: 100%;
+    list-style-type: none;
+}
+.feature-right ul li {
+    margin: auto;
+    display: inline-block;
+    width: 20%;
+    color: black;
+    font-family: future;
+    font-size: 10px;
+    text-align: right;
 }
 
-.feature-left h2 {
-     font-family: nova;
-     margin-bottom: 20px;
+.features2 h2 {
+     font-family: hacked;
+     color: white;
+     margin: 0;
+    /* margin-bottom: 20px;
      text-align: center;
      float: left;
      color: white;
      position: relative;
-     bottom: 110px;
-     left: 50px;
-     font-size: 30px;
+     bottom: 130px;
+     left: 30px;*/
+     font-size: 40px;
 }
-
-.feature-content {
-     width: 33.333%;
-     float: left;
-}
-
 
 .footer {
   height: 200px;
@@ -462,9 +480,11 @@ section {
   margin: auto;
   padding: 20px;
   text-align: center;
+  background-color: #ff6961;
   background-color: black;
   color: white;
   margin: 10%;
+  font-family: dolce;
 }
 
 .extra-purple {
@@ -477,16 +497,40 @@ section {
     right: 60px;
     width: 1280px;
 
+
+}
+
+.extra-red {
+    padding: 130px 3.25% 30px 60.5625%;
+    min-height: 20%;
+    /*background: #aec6cf;*/
+    background-color: black;
+    position: absolute;
+    z-index: -4;
+    top: 0;
+    left: 0px;
+    width: 1000;
+    -webkit-transform: rotate(-45deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-45deg);
+
+    /* IE */
+    -ms-transform: rotate(-45deg);
+
+    /* Opera */
+    -o-transform: rotate(-45deg);
+
 }
 
 .extra-yellow {
     padding: 130px 3.25% 30px 60.5625%;
     position: relative;
-    width: 80px;
+    width: 1000px;
     min-height:80%;
     background:#fcf910;
-    bottom: 500px;
-    left: 700px;
+    bottom: 600px;
+    left: 600px;
     z-index: -4;
     /* Safari */
     -webkit-transform: rotate(-90deg);
