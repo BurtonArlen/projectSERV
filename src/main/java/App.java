@@ -1,4 +1,5 @@
 import java.util.*;
+import java.net.ConnectException;
 import java.io.*;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -130,7 +131,7 @@ public class App {
 
       String newUserFirstName = request.queryParams("newUserFirstName");
       String newUserLastName = request.queryParams("newUserLastName");
-      String newUserEmail = request.queryParams("newUserEmail");
+      String newUserEmail = request.queryParams("newUserEmail").toLowerCase();
       String newPassword = request.queryParams("newPassword");
       String confirmPassword = request.queryParams("confirmPassword");
 
@@ -155,7 +156,7 @@ public class App {
     post("/login", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
-      String userName = request.queryParams("userName");
+      String userName = request.queryParams("userName").toLowerCase();
       String password = request.queryParams("password");
 
       if(Student.login(userName, password) == null){
@@ -183,7 +184,7 @@ public class App {
       int id = Integer.parseInt(request.params("id"));
       String newUserFirstName = request.queryParams("newUserFirstName");
       String newUserLastName = request.queryParams("newUserLastName");
-      String newUserEmail = request.queryParams("newUserEmail");
+      String newUserEmail = request.queryParams("newUserEmail").toLowerCase();
       String bio = request.queryParams("bio");
       String skills = request.queryParams("skills").toLowerCase();
       String work_exp = request.queryParams("work_exp").toLowerCase();
@@ -211,7 +212,7 @@ public class App {
           break;
         case 2:
           if(Student.findStudentByEmail(search) != null){
-            students.add(Student.findStudentByEmail(search));
+            students.add(Student.findStudentByEmail(search.toLowerCase()));
           }
           break;
         case 3:
@@ -243,6 +244,7 @@ public class App {
         }
         return null;
     });
+
 
 
     // post("/upload", (req, res) -> {

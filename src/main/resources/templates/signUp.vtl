@@ -33,8 +33,8 @@
 										<label class="red">Invalid Credentials</label>
 									#end
 								<div class="form-group">
-									<label for="userName">User Name</label>
-									<input id="userName" name="userName" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+									<label for="userName">Email</label>
+									<input id="userName" name="userName" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$" required>
 								</div>
 								<div class="form-group">
 									<label for="password">Password</label>
@@ -67,10 +67,10 @@
           #if($errorsArray.contains(1))
             <br><label for="newUserEmail" class="red">Email Already Exists</label>
           #end
-					<input id="newUserEmail" name="newUserEmail" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+					<input id="newUserEmail" name="newUserEmail" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,4}$" required>
 				</div>
 				<div class="form-group">
-					<label for="newPassword">Password</label>
+					<label for="newPassword">Password  (one uppercase one lowercase one number and a total of six characters)</label>
           #if($errorsArray.contains(2))
             <br><label for="newPassword" class="red">Passwords Didn't Match</label>
           #end
