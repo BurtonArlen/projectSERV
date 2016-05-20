@@ -53,24 +53,11 @@ Developer @GA in NYC
 
 body {
      
-     font-size: 12px;
+     font-size: 15px;
      line-height: 1.4;
      font-family: Helvetica, Arial, sans-serif;
      margin:0px;
 }
-
-/*#theBackground {
-    position: fixed;
-    top: 0;
-    z-index: -4;
-    min-height: 100%;
-    min-width: 100%;
-    background: url(../images/glass.jpeg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}*/
 
 .main-content {
      min-width: 100%; 
@@ -80,21 +67,19 @@ body {
      background-color: rgba(0,0,0,.89);
 }
 
-svg{
+svg {
+
   width: 600px;
   height: 120px;
   display: none;
   position: relative;
-  
   left: 45%;
   overflow: hidden; 
   margin: 0 auto;
-  
 }
 
 .container {
      margin: auto;
-     
 }
 
 #container-background {
@@ -175,7 +160,6 @@ svg{
      min-width: 200px;
      background-color: black;
      z-index: 1;
-     
 }
 
 form {
@@ -202,7 +186,7 @@ label {
      background-color: inherit!important;
      border: none;
      text-align: center;
-     font-family: nova;
+     font-family: future;
      color: white;
 }
 
@@ -213,15 +197,12 @@ label {
 header {
   width: 100%;
   margin: auto;
-  /*background: url(../images/greyModern.jpeg) no-repeat center center fixed; */
-  
 }
 
 .header-background {
     background-color: rgba(0,0,0,.5);
-    /*width: 70%;*/
-
 }
+
 .header-background-2 {
     background-color: black;
     width: 70%;
@@ -243,7 +224,7 @@ header {
 
 h2 {
     text-align: center;
-    font-family: codelight;
+    font-family: future;
 }
 
 .clearfix nav {
@@ -252,15 +233,14 @@ h2 {
   
 }
 
-.left {
-     /*float: left;*/
+.right {
+    float: right;
+    position: relative;
+    bottom: 30px;
 }
 
-.right {
-     float: right;
-     position: relative;
-     bottom: 30px;
-
+.left li a {
+    font-family: future;
 }
 
 .nav-right {
@@ -268,13 +248,11 @@ h2 {
     bottom:30px;
 }
 
-
 h1 {
     text-align: center;
     float: right;   
     width: 50%; 
 }
-
 
 
 nav ul {
@@ -362,11 +340,6 @@ li:hover {
      z-index: -3;
   }
 
-  p {
-     
-     font-size: 200%;
-  }
-
 .gallery {
     margin:auto;
     background-color: black;
@@ -390,43 +363,38 @@ li:hover {
 .features {
     margin:2%;
     position: relative;
+    height: 300px;
     background-color: white;
     z-index: -2;
 }
 
-.feature-left, .feature-right  {
+.features img {
     position: relative;
-    float: left;
-    height:300px;
-    width: 50%;
-}
-
-.feature-left img {
+    width: 1130px;
     height: 300px;
-    width: 600px;
-    opacity: 0.8;
-    position: relative;
-    z-index: -1;
+
 }
 
-.feature-content{
+.feature-content {
     
-    margin-left: 80px;
-    background-color: black;  
-    width: 450px;
+    position: absolute;
+    background-color: black;
+    z-index: -5;
+    border-radius: 50%;  
+    height: 400px;
+    width: 400px;
+    top: 150px;
+    right: 300px;
 }
 
 .feature-content p {
-    
-    font-family: dolce;  
-    display: block;
-    margin: auto;
-    padding: 20px;
     color: white;
-    text-align: center;
-    /*margin: 10%;*/
-
-    
+    border-radius: 50%;
+    height: 350px;
+    width: 350px;
+    margin: auto;
+    margin-top: 6%;
+    background-color: white;
 }
 
 .feature-right ul {
@@ -438,6 +406,7 @@ li:hover {
     width: 100%;
     list-style-type: none;
 }
+
 .feature-right ul li {
     margin: auto;
     display: inline-block;
@@ -449,17 +418,10 @@ li:hover {
 }
 
 .features2 h2 {
-     font-family: hacked;
+     font-family: future;
      color: white;
      margin: 0;
-    /* margin-bottom: 20px;
-     text-align: center;
-     float: left;
-     color: white;
-     position: relative;
-     bottom: 130px;
-     left: 30px;*/
-     font-size: 40px;
+     font-size: 15px;
 }
 
 .footer {
@@ -573,7 +535,6 @@ li:hover {
     border: 1em solid white;
     border-radius: 50%;
     display: block;
-    
     margin: auto;
     height: 200px;
     width: 200px;
@@ -659,11 +620,8 @@ main {
     position: relative;
     top: -30px;
     left: 650px;
-    /*height: 400px;*/
     width: 600px;
     z-index: 0;
-    /*border: 0.5em solid black;*/
-    
 }
 
 .main-left {
@@ -691,7 +649,6 @@ main {
     left: 250px;
     bottom: 500px;
 }
-
 
 .member-purple-container {
     position: relative;
