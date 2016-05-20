@@ -34,7 +34,7 @@
 									#end
 								<div class="form-group">
 									<label for="userName">User Name</label>
-									<input id="userName" name="userName" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+									<input id="userName" name="userName" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 								</div>
 								<div class="form-group">
 									<label for="password">Password</label>
@@ -58,13 +58,14 @@
 		</div>
 
 		<div class="personal-content">
-			<h1>$student.getStudentFirstName() </h1>
-			<h1>$student.getStudentLastName()</h1>
+			<h1>$student.getStudentFirstName() $student.getStudentLastName()</h1>
 		</div>
 		<main class="clearfix">
 			<div class="main-left">
 				<p>Bio:</p>
-				<p>$student.getStudentBio()</p>
+				#if($student.getStudentBio())
+					<p>$student.getStudentBio()</p>
+				#end
 				<hr>
 				<p>Email:</p>
 				<p>$student.getStudentEmail()</p>
@@ -73,7 +74,7 @@
 				#end
 			</div>
 			<div class="main-right">
-				<h2>Languages</h2>
+				<h2>Skills</h2>
 				#foreach($skill in $student.getSkills())
 				<p>$skill.toUpperCase()</p>
 				#end

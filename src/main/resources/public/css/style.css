@@ -547,10 +547,10 @@ section {
     position: absolute;
     top: 150px;
     left: 400px;
-
 }
 
 .personal-content h1 {
+    float: inherit;
     color: black;
     font-family: ethon;
 
@@ -596,7 +596,7 @@ section {
     position: relative;
     width: 20%;
     left: 150px;
-    bottom: 300px;
+    bottom: 250px;
 
 
 }

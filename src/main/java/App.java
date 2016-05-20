@@ -93,6 +93,10 @@ public class App {
     }, new VelocityTemplateEngine());
 
     get("/edit/:id", (request, response) -> {
+
+      if(Student.findStudentById(Integer.parseInt(request.params("id"))) == null){
+        response.redirect("/noprofile");
+      }
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("student", Student.findStudentById(Integer.parseInt(request.params("id"))));
       model.put("url", request.url());

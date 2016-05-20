@@ -1,4 +1,9 @@
-
+<script type="text/javascript">
+	function auto_grow(element) {
+			element.style.height = "5px";
+			element.style.height = (element.scrollHeight)+"px";
+	}
+</script>
 <div class="banner">
 	<header class="clearfix">
 		<div class="clearfix header-background">
@@ -34,7 +39,7 @@
 									#end
 								<div class="form-group">
 									<label for="userName">User Name</label>
-									<input id="userName" name="userName" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+									<input id="userName" name="userName" class="form-control" type="text" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 								</div>
 								<div class="form-group">
 									<label for="password">Password</label>
@@ -58,18 +63,18 @@
 		<form id="signup" class="form-group" action='/edit/$student.getId()' method='post'>
 			<div class="form-group">
 				<label for="newUserFirstName">First Name</label>
-				<input id="newUserFirstName" name="newUserFirstName" #if($student.getStudentFirstName() != "")value="$student.getStudentFirstName()"#end class="form-control" type="text">
+				<input id="newUserFirstName" name="newUserFirstName" #if($student.getStudentFirstName())value="$student.getStudentFirstName()"#end class="form-control" type="text">
 			</div>
 			<div class="form-group">
 				<label for="newUserLastName">Last Name</label>
-				<input id="newUserLastName" name="newUserLastName" #if($student.getStudentLastName() != "")value="$student.getStudentLastName()"#end class="form-control" type="text">
+				<input id="newUserLastName" name="newUserLastName" #if($student.getStudentLastName())value="$student.getStudentLastName()"#end class="form-control" type="text">
 			</div>
 			<div class="form-group">
 				<label for="newUserEmail">Email Address</label>
 				#if($errorsArray.contains(1))
 					<br><label for="newUserEmail" class="red">Email Already Exists</label>
 				#end
-				<input id="newUserEmail" name="newUserEmail" #if($student.getStudentEmail() != "")value="$student.getStudentEmail()"#end class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+				<input id="newUserEmail" name="newUserEmail" #if($student.getStudentEmail())value="$student.getStudentEmail()"#end class="form-control" type="text" pattern="[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 				<input id="newPassword" name="newPassword" class="form-control" type="hidden" pattern="^(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
 			</div>
 			<div class="form-group">
