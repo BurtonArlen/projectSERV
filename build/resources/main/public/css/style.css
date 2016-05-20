@@ -237,6 +237,8 @@ h2 {
     float: right;
     position: relative;
     bottom: 30px;
+    border-bottom: .5px solid #e5c3ff;
+  
 }
 
 .left li a {
@@ -245,7 +247,7 @@ h2 {
 
 .nav-right {
     position: relative;
-    bottom:30px;
+    bottom:35px;
 }
 
 h1 {
@@ -372,6 +374,15 @@ li:hover {
     position: relative;
     width: 1130px;
     height: 300px;
+
+}
+
+.features h1 {
+    position: absolute;
+    top: 20px;
+    left: -150px;
+    color: white;
+    font-family: future;
 
 }
 
